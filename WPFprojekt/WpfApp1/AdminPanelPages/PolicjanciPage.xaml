@@ -1,0 +1,104 @@
+﻿<Page x:Class="PoliceApp.PolicjanciPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PoliceApp"
+        mc:Ignorable="d"
+                Title="Policjaci" Height="516" Width="946">
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="Blue" Offset="0.0" />
+                <GradientStop Color="Cyan" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
+        <Rectangle HorizontalAlignment="Center" Height="446" Margin="0,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="926">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Blue" Offset="0.0" />
+                    <GradientStop Color="Cyan" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Label Name="CurrentMode" Content="Nowa pozycja" FontSize="18" HorizontalAlignment="Left" Margin="751,147,0,0" VerticalAlignment="Top"/>
+        <Button Name="AddEdit" Content="Dodaj" HorizontalAlignment="Left" Margin="776,371,0,0" VerticalAlignment="Top"  Click="Button_Click_DodajOrEdytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="Abort" Content="Zatrzymaj" Visibility="Hidden"  HorizontalAlignment="Left" Margin="684,309,0,0" VerticalAlignment="Top" Height="31" Width="62" Click="Button_Click_Abort" Background="Gray">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Usuń" Margin="821,412,35,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Delete"  Height="26" Width="90" FontSize="15"  Background="Red">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Panel zarządzania policjantami" FontFamily="Cooper Black"
+  FontSize="36" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Imię" FontSize="18" HorizontalAlignment="Left" Margin="688,186,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nazwisko" FontSize="18" HorizontalAlignment="Left" Margin="652,212,0,0" VerticalAlignment="Top"/>
+        <Label Content="Login" FontSize="18" HorizontalAlignment="Left" Margin="680,238,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FilterId" HorizontalAlignment="Left" Margin="28,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
+        <TextBox x:Name="FilterImie" HorizontalAlignment="Left" Margin="137,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FilterNazwisko" HorizontalAlignment="Left" Margin="257,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FilterRanga" HorizontalAlignment="Left" Margin="377,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FilterIdKomendy" HorizontalAlignment="Left" Margin="497,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FilterAdres"  HorizontalAlignment="Left" Margin="617,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Filter" Content="Filtruj" Margin="595,109,262,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Filter"  Height="27" FontSize="15"  Background="CadetBlue">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <ListView Name="ListViewColumns" Margin="28,107,364,44">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding UzytkownikId}" />
+                    <GridViewColumn x:Name="ImieHeader" Header="Imie" Width="110" DisplayMemberBinding="{Binding Policjant.Imie}"/>
+                    <GridViewColumn x:Name="NazwiskoHeader" Header="Nazwisko"  Width="100" DisplayMemberBinding="{Binding Policjant.Nazwisko}"/>
+                    <GridViewColumn x:Name="RangaHeader" Header="Ranga"  Width="120" DisplayMemberBinding="{Binding Policjant.Ranga.Nazwa}"/>
+                    <GridViewColumn x:Name="KomendaIdHeader" Header="ID Komendy"  Width="70" DisplayMemberBinding="{Binding Policjant.Komenda.KomendaId}"/>
+                    <GridViewColumn x:Name="KomendaHeader" Header="Adres Komendy"  Width="130" DisplayMemberBinding="{Binding Policjant.Komenda.Adres}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="Name"  Background="White" HorizontalAlignment="Left" Margin="751,186,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="140"/>
+        <TextBox x:Name="Sunrame"  Background="White" HorizontalAlignment="Left" Margin="751,216,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="140"/>
+        <TextBox x:Name="Login"  Background="White" HorizontalAlignment="Left" Margin="751,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="140" Height="24" RenderTransformOrigin="0.45,2.463"/>
+        <Label Content="Hasło" HorizontalAlignment="Left" FontSize="18" Margin="682,271,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Password"  Background="White" HorizontalAlignment="Left" Margin="751,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="25" RenderTransformOrigin="0.45,2.463"/>
+        <ComboBox Name="RangaBox" HorizontalAlignment="Left" Margin="751,307,0,0" VerticalAlignment="Top" Width="140" Height="25" DisplayMemberPath="Nazwa" />
+        <ComboBox Name="KomendaBox" HorizontalAlignment="Left" Margin="751,337,0,0" VerticalAlignment="Top" Width="140" Height="25" DisplayMemberPath="KomendaId" />
+        <Label Content="Ranga" FontSize="18" HorizontalAlignment="Left" Margin="677,303,0,0" VerticalAlignment="Top"/>
+        <Label Content="Komenda" FontSize="18" HorizontalAlignment="Left" Margin="651,333,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="EditButton" Content="Edytuj" Margin="707,412,149,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="Refresh" Content="Odśwież" Margin="811,65,45,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <CheckBox x:Name="AdminCheckBox" FontSize="18" Content="Administrator" HorizontalAlignment="Left" Margin="751,124,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" />
+
+    </Grid>
+</Page>

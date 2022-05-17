@@ -1,0 +1,64 @@
+﻿<Page x:Class="PoliceApp.Podwladni"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PoliceApp"
+      mc:Ignorable="d" 
+      Title="Podwładni" Height="516" Width="946">
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="Blue" Offset="0.0" />
+                <GradientStop Color="Cyan" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
+        <Rectangle HorizontalAlignment="Left" Height="445" Margin="24,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="904">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Blue" Offset="0.0" />
+                    <GradientStop Color="Cyan" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ListView  MouseDoubleClick="ListView_MouseDoubleClick" Name="ListViewColumns" Margin="61,115,380,75" ItemsSource="{Binding TrackCollection}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding PolicjantId}" />
+                    <GridViewColumn x:Name="ImieHeader" Header="Imie" Width="110" DisplayMemberBinding="{Binding Imie}"/>
+                    <GridViewColumn x:Name="NazwiskoHeader" Header="Nazwisko"  Width="100" DisplayMemberBinding="{Binding Nazwisko}"/>
+                    <GridViewColumn x:Name="RangaHeader" Header="Ranga"  Width="60" DisplayMemberBinding="{Binding Ranga.Nazwa}"/>
+                    <GridViewColumn x:Name="KomendaHeader" Header="Komenda adres"  Width="120" DisplayMemberBinding="{Binding Komenda.Adres}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="825,52,0,0" VerticalAlignment="Top" Height="28" Width="88" Background="CadetBlue" Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Ustawienie Planu Podwładnemu" FontFamily="Cooper Black"
+  FontSize="36" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Height="53"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="706,353,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,-1.782" Height="28" Width="88" Click="Button_Click_Dodaj" Background="CadetBlue">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <ComboBox Name="RadiowozBox" HorizontalAlignment="Left" Margin="690,161,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="RadiowozId"/>
+        <Label Content="Radiowóz ID"  FontSize="15" HorizontalAlignment="Left" Margin="704,131,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Data_roz" HorizontalAlignment="Left" Margin="608,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="20"/>
+        <TextBox x:Name="Godzina_roz"  Height="20" HorizontalAlignment="Left" Margin="766,297,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <TextBox x:Name="Data_zak" HorizontalAlignment="Left" Margin="608,297,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"  Height="20"/>
+        <TextBox x:Name="Godzina_Zak"  Height="20" HorizontalAlignment="Left" Margin="766,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <Label Content="Data Rozpoczęcia"  FontSize="15" HorizontalAlignment="Left" Margin="603,202,0,0" VerticalAlignment="Top"/>
+        <Label Content="Godzina Rozpoczęcia"  FontSize="15" HorizontalAlignment="Left" Margin="762,202,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data Zakończenia" FontSize="15" HorizontalAlignment="Left" Margin="603,271,0,0" VerticalAlignment="Top"/>
+        <Label Content="Godzina Zakończenia" FontSize="15" HorizontalAlignment="Left" Margin="762,271,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Page>
