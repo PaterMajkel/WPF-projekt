@@ -24,14 +24,14 @@ namespace PoliceApp
     public partial class PlanOfSuborned : Window
     {
         public ICollection<Patrol> patrol;
-        public Policjant policjant;
+        public Policeman policjant;
         private DatabaseService databaseService = new();
 
-        public PlanOfSuborned(Policjant pato)
+        public PlanOfSuborned(Policeman pato)
         {
             InitializeComponent();
             policjant = databaseService.GetPolicjantByObj(pato);
-            Nazwa.Content = policjant.PolicjantId;
+            Name.Content = policjant.PolicemanId;
             ListViewColumns.ItemsSource = policjant.Patrols;
         }
     }

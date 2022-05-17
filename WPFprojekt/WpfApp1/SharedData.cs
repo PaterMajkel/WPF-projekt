@@ -9,9 +9,9 @@ namespace PoliceApp
 {
     public class SharedData
     {
-        public Uzytkownik uzytkownik { get; set; }
+        public User uzytkownik { get; set; }
 
-        private SharedData(Uzytkownik uzytkownik) {
+        private SharedData(User uzytkownik) {
             this.uzytkownik = uzytkownik;
         }
 
@@ -19,7 +19,7 @@ namespace PoliceApp
         private static SharedData _instance;
 
         
-        public static SharedData GetInstance(Uzytkownik uzytkownik)
+        public static SharedData GetInstance(User uzytkownik)
         {
             if (_instance == null)
             {

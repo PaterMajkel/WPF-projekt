@@ -36,69 +36,69 @@ namespace EntityFramework.Services
         //TODO: zbieranie patroli + filtr po atrybutach
         //TODO: komendy filtr po mieście, po strefie zagrożenia dzielnicy
         //TODO: zebranie wszystkich przestepstw/wykroczen danej osoby z kartoteki
-        public ICollection<Ranga> GetRangas()
+        public ICollection<Rank> GetRanks()
         {
-            return _context.Rangas.Where(p => p.IsActive).ToList();
+            return _context.Ranks.Where(p => p.IsActive).ToList();
         }
-        public ICollection<Radiowoz> GetRadiowozs()
+        public ICollection<PoliceCar> GetPoliceCars()
         {
-            return _context.Radiowozs.Where(p => p.IsActive).ToList();
+            return _context.PoliceCars.Where(p => p.IsActive).ToList();
         }
-        public ICollection<Przestepstwo> GetPrzestepstwos()
+        public ICollection<Crime> GetCrimes()
         {
-            return _context.Przestepstwos.Where(p => p.IsActive).ToList();
+            return _context.Crimes.Where(p => p.IsActive).ToList();
         }
-        public ICollection<Wykroczenia> GetWykroczenias()
+        public ICollection<Felony> GetFelonys()
         {
-            return _context.Wykroczenias.Where(p => p.IsActive).ToList();
+            return _context.Felonys.Where(p => p.IsActive).ToList();
         }
-        public ICollection<Policjant> GetPolicjants()
+        public ICollection<Policeman> GetPolicemen()
         {
-            return _context.Policjants.Where(p => p.IsActive).ToList();
+            return _context.Policemans.Where(p => p.IsActive).ToList();
         }
-        public ICollection<Policjant>GetPolicjantsAndRank()
+        public ICollection<Policeman>GetPolicemenAndRank()
         {
-            return _context.Policjants.Where(p => p.IsActive).Include(k => k.Ranga).ToList();
+            return _context.Policemans.Where(p => p.IsActive).Include(k => k.Ranga).ToList();
         }
-        public ICollection<Kartoteka> GetKartotekasCoughtByPolicjantId(int id)
+        public ICollection<Register> GetRegistryCoughtByPolicemanId(int id)
         {
             //do zrobienia wciaz -> przykladowe zapytanie do podpatrzenia sb
-            var query = from x in _context.Kartotekas
-                        where x.KartotekaId == id
+            var query = from x in _context.Registers
+                        where x.RegisterId == id
                         select x;
-            var y = _context.Kartotekas.FromSqlRaw($"select * from * where id={id}");
+            var y = _context.Registers.FromSqlRaw($"select * from * where id={id}");
             return query.ToList();
         }
-        public ICollection<Kartoteka> GetKartotekas()
+        public ICollection<Register> GetRegisters()
         {
-            var x = _context.Kartotekas.Where(p => p.IsActive).ToList();
+            var x = _context.Registers.Where(p => p.IsActive).ToList();
             return x;
         }
-        public Uzytkownik GetUzytkownik(string login, string password)
+        public User GetUsers(string login, string password)
         {
             if (login == null || password == null)
                 return null;
-            var uzytkownik = _context.Uzytkowniks.Where(p => p.IsActive).Where(x => x.Login == login).Where(x => x.Password == password).FirstOrDefault();
+            var uzytkownik = _context.Users.Where(p => p.IsActive).Where(x => x.Login == login).Where(x => x.Password == password).FirstOrDefault();
             return uzytkownik;
         }
         //xD kocham SQL ;* od majkela
-        public ICollection<Komenda> GetKomendas()
+        public ICollection<PoliceStation> GetPoliceStations()
         {
             /* Tworzenie kwerendy
-             * return _context.Komendas
-                .Join(_context.Miastos.Join(_context.Region_Miastas, miasto=>miasto.ID_miasta, region=>region.ID_miasta, (miasto, region) => new { ID=region.ID_regionu, Nazwa_regionu= region.Nazwa, Nazwa_miasta = miasto.Nazwa, Stopien_Zagrozenia = region.Stopien_zagrozenia })
-                , komenda=>komenda.ID_regionu, _a=>_a.ID, (komenda, _a) => new Komenda_Miasto_Region { ID_komendy = komenda.ID_komendy, ID_regionu=komenda.ID_regionu, Nazwa_regionu=_a.Nazwa_regionu, Nazwa_miasta=_a.Nazwa_miasta, Stopien_zagrozenia=_a.Stopien_Zagrozenia, Adres=komenda.Adres} )
+             * return _context.PoliceStations
+                .Join(_context.Citys.Join(_context.Region_Citys, miasto=>miasto.ID_miasta, region=>region.ID_miasta, (miasto, region) => new { ID=region.RegionId, RegionName= region.Name, CityName = miasto.Name, Stopien_Zagrozenia = region.DangerStage })
+                , komenda=>komenda.RegionId, _a=>_a.ID, (komenda, _a) => new PoliceStation_City_Region { PoliceStationId = komenda.PoliceStationId, RegionId=komenda.RegionId, RegionName=_a.RegionName, CityName=_a.CityName, DangerStage=_a.Stopien_Zagrozenia, Address=komenda.Address} )
                 .ToList();*/
-            return _context.Komendas.Where(p => p.IsActive).Include(k => k.Region_Miasta).ThenInclude(kr => kr.Miasto).ToList();
+            return _context.PoliceStations.Where(p => p.IsActive).Include(k => k.Region_City).ThenInclude(kr => kr.City).ToList();
         }
-        public void DeleteKomendas(ICollection<Komenda> data)
+        public void DeletePoliceStations(ICollection<PoliceStation> data)
         {
             foreach (var element in data)
             {
-                //var temp = _context.Komendas.Find(element.KomendaId);
+                //var temp = _context.PoliceStations.Find(element.PoliceStationId);
                 //if (temp != null)
                 //    _context.Remove(temp);
-                var temp = _context.Komendas.Find(element.KomendaId);
+                var temp = _context.PoliceStations.Find(element.PoliceStationId);
                 if (temp != null)
                 {
                     temp.IsActive = false;
@@ -106,53 +106,53 @@ namespace EntityFramework.Services
             }
             _context.SaveChanges();
         }
-        public void EditKomenda(Komenda data)
+        public void EditPoliceStations(PoliceStation data)
         {
-            var edited = _context.Komendas.Where(p => p.KomendaId == data.KomendaId).FirstOrDefault();
+            var edited = _context.PoliceStations.Where(p => p.PoliceStationId == data.PoliceStationId).FirstOrDefault();
             if (edited == null)
                 return;
             edited = data;
             _context.SaveChanges();
         }
 
-        public void DeletePrzestepstwos(ICollection<Przestepstwo> data)
+        public void DeletePrzestepstwos(ICollection<Crime> data)
         {
             foreach (var element in data)
             {
-                var temp = _context.Przestepstwos.Find(element.PrzestepstwoId);
+                var temp = _context.Crimes.Find(element.PrzestepstwoId);
                 if (temp != null)
                     //_context.Remove(temp);
                     temp.IsActive = false;
             }
             _context.SaveChanges();
         }
-        public void DeleteWykroczenias(ICollection<Wykroczenia> data)
+        public void DeleteWykroczenias(ICollection<Felony> data)
         {
             foreach (var element in data)
             {
-                var temp = _context.Wykroczenias.Find(element.WykroczenieId);
+                var temp = _context.Felonys.Find(element.FelonyId);
                 if (temp != null)
                     //_context.Remove(temp);
                     temp.IsActive = false;
             }
             _context.SaveChanges();
         }
-        public void DeleteKartotekas(ICollection<Kartoteka> data)
+        public void DeleteKartotekas(ICollection<Register> data)
         {
             foreach (var element in data)
             {
-                var temp = _context.Kartotekas.Find(element.KartotekaId);
+                var temp = _context.Registers.Find(element.RegisterId);
                 if (temp != null)
                     //_context.Remove(temp);
                     temp.IsActive = false;
             }
             _context.SaveChanges();
         }
-        public void DeleteRadiowozos(ICollection<Radiowoz> data)
+        public void DeleteRadiowozos(ICollection<PoliceCar> data)
         {
             foreach (var element in data)
             {
-                var temp = _context.Radiowozs.Find(element.RadiowozId);
+                var temp = _context.PoliceCars.Find(element.PoliceCarId);
                 if (temp != null)
                     //_context.Remove(temp);
                     temp.IsActive = false;
@@ -160,213 +160,213 @@ namespace EntityFramework.Services
             }
             _context.SaveChanges();
         }
-        public ICollection<Miasto> GetMiastos()
+        public ICollection<City> GetMiastos()
         {
-            return _context.Miastos.Where(p => p.IsActive).ToList();
+            return _context.Citys.Where(p => p.IsActive).ToList();
         }
 
-        public ICollection<Region_Miasta> getRegionsOfMiasto(Miasto miasto)
+        public ICollection<Region_City> getRegionsOfMiasto(City miasto)
         {
-            return _context.Region_Miastas.Where(p => p.IsActive).Where(r => r.MiastoId == miasto.MiastoId).ToList();
+            return _context.Region_Citys.Where(p => p.IsActive).Where(r => r.CityId == miasto.CityId).ToList();
         }
 
-        public void AddKomenda(Komenda komenda)
+        public void AddKomenda(PoliceStation komenda)
         {
             _context.Add(komenda);
             _context.SaveChanges();
         }
-        public void AddKartotekas(Kartoteka kartoteka)
+        public void AddKartotekas(Register register)
         {
-            _context.Add(kartoteka);
+            _context.Add(register);
             _context.SaveChanges();
         }
-        public void AddRadiowozos(Radiowoz radiowoz)
+        public void AddRadiowozos(PoliceCar policeCar)
         {
-            _context.Add(radiowoz);
+            _context.Add(policeCar);
             _context.SaveChanges();
         }
-        public void AddPrzstepstwos(Przestepstwo przestepstwo)
+        public void AddPrzstepstwos(Crime przestepstwo)
         {
             _context.Add(przestepstwo);
             _context.SaveChanges();
         }
 
-        public ICollection<Uzytkownik> GetUzytkowniks()
+        public ICollection<User> GetUzytkowniks()
         {
-            return _context.Uzytkowniks.Where(p => p.IsActive)
-                .Include(p => p.Policjant).ThenInclude(p => p.Komenda)
+            return _context.Users.Where(p => p.IsActive)
+                .Include(p => p.Policeman).ThenInclude(p => p.PoliceStation)
                 .ToList();
 
         }
-        public void DeleteUzytkowniks(ICollection<Uzytkownik> data)
+        public void DeleteUzytkowniks(ICollection<User> data)
         {
             foreach (var element in data)
             {
-                var temp = _context.Uzytkowniks.Find(element.UzytkownikId);
-                if (temp != null && temp.Rola.ToUpper() != "ADMIN")
+                var temp = _context.Users.Find(element.UserId);
+                if (temp != null && temp.Role.ToUpper() != "ADMIN")
                     //_context.Remove(temp);
                     temp.IsActive = false;
 
             }
         }
-        public void AddUzytkownik(Uzytkownik uzytkownik, Policjant policjant)
+        public void AddUzytkownik(User uzytkownik, Policeman policjant)
         {
             if (uzytkownik == null)
                 return;
-            if (uzytkownik.Rola.ToUpper() == "ADMIN")
+            if (uzytkownik.Role.ToUpper() == "ADMIN")
             {
-                uzytkownik.PolicjantId = 1;
-                _context.Uzytkowniks.Add(uzytkownik);
+                uzytkownik.PolicemanId = 1;
+                _context.Users.Add(uzytkownik);
             }
             else
             {
-                _context.Policjants.Add(policjant);
+                _context.Policemans.Add(policjant);
                 _context.SaveChanges();
 
-                uzytkownik.PolicjantId = policjant.PolicjantId;
-                _context.Uzytkowniks.Add(uzytkownik);
+                uzytkownik.PolicemanId = policjant.PolicemanId;
+                _context.Users.Add(uzytkownik);
 
             }
             _context.SaveChanges();
         }
-        public void AddWykroczenias(Wykroczenia wykroczenia)
+        public void AddWykroczenias(Felony wykroczenia)
         {
             _context.Add(wykroczenia);
             _context.SaveChanges();
         }
-        public void EditUzytkownik(Uzytkownik uzytkownik)
+        public void EditUzytkownik(User uzytkownik)
         {
-            var edited = _context.Uzytkowniks.Where(p => p.UzytkownikId == uzytkownik.UzytkownikId).FirstOrDefault();
+            var edited = _context.Users.Where(p => p.UserId == uzytkownik.UserId).FirstOrDefault();
             if (edited == null)
                 return;
             edited = uzytkownik;
             _context.SaveChanges();
         }
-        public void EditRadiowoz(Radiowoz data)
+        public void EditRadiowoz(PoliceCar data)
         {
-            var edited = _context.Radiowozs.Where(p => p.RadiowozId == data.RadiowozId).FirstOrDefault();
+            var edited = _context.PoliceCars.Where(p => p.PoliceCarId == data.PoliceCarId).FirstOrDefault();
             if (edited == null)
                 return;
             edited = data;
             _context.SaveChanges();
         }
-        public Kartoteka getKartotekaByObj(Kartoteka kartoteka)
+        public Register getKartotekaByObj(Register register)
         {
             //var x =File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "Police.png"));
             ////var y = Path.Combine(Directory.GetCurrentDirectory(), "Police.png");
             ;
-            return _context.Kartotekas.Where(p => p == kartoteka).Include(p => p.Wykroczenias).Include(p => p.Przestepstwos).First();
+            return _context.Registers.Where(p => p == register).Include(p => p.Felonys).Include(p => p.Crimes).First();
         }
-        public Wykroczenia getWykroczenieByObj(Wykroczenia wykroczenia)
+        public Felony getWykroczenieByObj(Felony wykroczenia)
         {
-            return _context.Wykroczenias.Where(p => p == wykroczenia).Include(p => p.Kartotekas).Include(p => p.Policjants).First();
+            return _context.Felonys.Where(p => p == wykroczenia).Include(p => p.Registers).Include(p => p.Policemans).First();
         }
-        public Przestepstwo getPrzestepstwoByObj(Przestepstwo przestepstwo)
+        public Crime getPrzestepstwoByObj(Crime przestepstwo)
         {
-            return _context.Przestepstwos.Where(p => p == przestepstwo).Include(p => p.Kartotekas).Include(p => p.Policjants).First();
+            return _context.Crimes.Where(p => p == przestepstwo).Include(p => p.Registers).Include(p => p.Policemans).First();
         }
-        public ICollection<Region_Miasta> getRegions()
+        public ICollection<Region_City> getRegions()
         {
-            return _context.Region_Miastas.Where(p => p.IsActive).Include(p => p.Miasto).ToList();
+            return _context.Region_Citys.Where(p => p.IsActive).Include(p => p.City).ToList();
         }
-        public void editRegion(Region_Miasta data)
+        public void editRegion(Region_City data)
         {
-            var edited = _context.Region_Miastas.Where(p => p.Region_MiastaId == data.Region_MiastaId).FirstOrDefault();
+            var edited = _context.Region_Citys.Where(p => p.Region_CityId == data.Region_CityId).FirstOrDefault();
             if (edited == null)
                 return;
             edited = data;
             _context.SaveChanges();
         }
-        public void AddKartotekaToPrzestepstwo(Przestepstwo przestepstwo, Kartoteka kartoteka)
+        public void AddKartotekaToPrzestepstwo(Crime przestepstwo, Register register)
         {
-            var temp = _context.Przestepstwos.Where(p => p.IsActive).Where(p => p.PrzestepstwoId == przestepstwo.PrzestepstwoId).Include(p => p.Kartotekas).First();
+            var temp = _context.Crimes.Where(p => p.IsActive).Where(p => p.PrzestepstwoId == przestepstwo.PrzestepstwoId).Include(p => p.Registers).First();
             if (temp != null)
             {
-                temp.Kartotekas.Add(kartoteka);
+                temp.Registers.Add(register);
                 _context.SaveChanges();
             }
         }
-         public void DeletePolicjantsFromPrzestepstwo(Przestepstwo data, ICollection<Policjant> police)
+         public void DeletePolicjantsFromPrzestepstwo(Crime data, ICollection<Policeman> police)
         {
-            var temp = _context.Przestepstwos.Where(p=> p.IsActive && p.PrzestepstwoId==data.PrzestepstwoId).Include(p=>p.Policjants).First();
+            var temp = _context.Crimes.Where(p=> p.IsActive && p.PrzestepstwoId==data.PrzestepstwoId).Include(p=>p.Policemans).First();
             foreach (var element in police)
             {
                 if (element != null)
-                    temp.Policjants.Remove(element);
+                    temp.Policemans.Remove(element);
             }
             _context.SaveChanges();
         }
      
-        public void DeleteSprawcaFromPrzestepstwo(Przestepstwo data, ICollection<Kartoteka> przestepca)
+        public void DeleteSprawcaFromPrzestepstwo(Crime data, ICollection<Register> przestepca)
         {
-            var temp = _context.Przestepstwos.Where(p => p.IsActive && p.PrzestepstwoId == data.PrzestepstwoId).Include(p => p.Kartotekas).First();
+            var temp = _context.Crimes.Where(p => p.IsActive && p.PrzestepstwoId == data.PrzestepstwoId).Include(p => p.Registers).First();
             foreach (var element in przestepca)
             {
                 if (element != null)
-                    temp.Kartotekas.Remove(element);
+                    temp.Registers.Remove(element);
             }
             _context.SaveChanges();
         }
-        public void DeletePolicjantsFromWykroczenie(Wykroczenia data, ICollection<Policjant> police)
+        public void DeletePolicjantsFromWykroczenie(Felony data, ICollection<Policeman> police)
         {
-            var temp = _context.Wykroczenias.Where(p => p.IsActive && p.WykroczenieId == data.WykroczenieId).Include(p => p.Policjants).First();
+            var temp = _context.Felonys.Where(p => p.IsActive && p.FelonyId == data.FelonyId).Include(p => p.Policemans).First();
             foreach (var element in police)
             {
                 if (element != null)
-                    temp.Policjants.Remove(element);
+                    temp.Policemans.Remove(element);
             }
             _context.SaveChanges();
         }
-        public void DeleteSprawcaFromWykroczenia(Wykroczenia data, ICollection<Kartoteka> przestepca)
+        public void DeleteSprawcaFromWykroczenia(Felony data, ICollection<Register> przestepca)
         {
-            var temp = _context.Wykroczenias.Where(p => p.IsActive && p.WykroczenieId == data.WykroczenieId).Include(p => p.Kartotekas).First();
+            var temp = _context.Felonys.Where(p => p.IsActive && p.FelonyId == data.FelonyId).Include(p => p.Registers).First();
             foreach (var element in przestepca)
             {
                 if (element != null)
-                    temp.Kartotekas.Remove(element);
+                    temp.Registers.Remove(element);
             }
             _context.SaveChanges();
         }
 
-        public Uzytkownik GetUzytkownikByObj(Uzytkownik data)
+        public User GetUzytkownikByObj(User data)
         {
             if (data != null)
             {
-                return _context.Uzytkowniks.Where(p => p.IsActive && p.PolicjantId == data.PolicjantId).Include(p => p.Policjant).ThenInclude(p => p.Patrols).ThenInclude(p => p.Radiowoz).First();
+                return _context.Users.Where(p => p.IsActive && p.PolicemanId == data.PolicemanId).Include(p => p.Policeman).ThenInclude(p => p.Patrols).ThenInclude(p => p.PoliceCar).First();
             }
             return null;
         }
-        public void AddPolicjatToPrzestepstwo(Przestepstwo przestepstwo, Policjant policjant)
+        public void AddPolicjatToPrzestepstwo(Crime przestepstwo, Policeman policjant)
         {
-            var temp = _context.Przestepstwos.Where(p => p.IsActive).Where(p => p.PrzestepstwoId == przestepstwo.PrzestepstwoId).Include(p => p.Policjants).First();
+            var temp = _context.Crimes.Where(p => p.IsActive).Where(p => p.PrzestepstwoId == przestepstwo.PrzestepstwoId).Include(p => p.Policemans).First();
             if (temp != null)
             {
-                temp.Policjants.Add(policjant);
+                temp.Policemans.Add(policjant);
                 _context.SaveChanges();
             }
         }
-        public void AddKartotekaToWykroczenie(Wykroczenia wykroczenia, Kartoteka kartoteka)
+        public void AddKartotekaToWykroczenie(Felony wykroczenia, Register register)
         {
-            var temp = _context.Wykroczenias.Where(p => p.IsActive).Where(p => p.WykroczenieId == wykroczenia.WykroczenieId).Include(p => p.Kartotekas).First();
+            var temp = _context.Felonys.Where(p => p.IsActive).Where(p => p.FelonyId == wykroczenia.FelonyId).Include(p => p.Registers).First();
             if (temp != null)
             {
-                temp.Kartotekas.Add(kartoteka);
+                temp.Registers.Add(register);
                 _context.SaveChanges();
             }
         }
-        public void AddPolicjantToWykroczenie(Wykroczenia wykroczenia, Policjant policjant)
+        public void AddPolicjantToWykroczenie(Felony wykroczenia, Policeman policjant)
         {
-            var temp = _context.Wykroczenias.Where(p => p.IsActive).Where(p => p.WykroczenieId == wykroczenia.WykroczenieId).Include(p => p.Policjants).First();
+            var temp = _context.Felonys.Where(p => p.IsActive).Where(p => p.FelonyId == wykroczenia.FelonyId).Include(p => p.Policemans).First();
             if (temp != null)
             {
-                temp.Policjants.Add(policjant);
+                temp.Policemans.Add(policjant);
                 _context.SaveChanges();
             }
 
         }
-        public ICollection<Policjant> GetPodwladni(Policjant policjant)
+        public ICollection<Policeman> GetPodwladni(Policeman policjant)
         {
-            return _context.Policjants.Where(p=>p.IsActive).Where(p=>p.KomendaId==policjant.KomendaId && p.RangaId< policjant.RangaId).Include(p=>p.Ranga).Include(p => p.Komenda).ToList();
+            return _context.Policemans.Where(p=>p.IsActive).Where(p=>p.PoliceStationId==policjant.PoliceStationId && p.RangaId< policjant.RangaId).Include(p=>p.Ranga).Include(p => p.PoliceStation).ToList();
         }
         public void AddPatrol(Patrol patrol)
         {
@@ -374,11 +374,11 @@ namespace EntityFramework.Services
             _context.SaveChanges();
 
         }
-        public Policjant GetPolicjantByObj(Policjant data)
+        public Policeman GetPolicjantByObj(Policeman data)
         {
             if (data != null)
             {
-                return _context.Policjants.Where(p => p.IsActive && p.PolicjantId == data.PolicjantId).Include(p => p.Patrols).ThenInclude(p => p.Radiowoz).First();
+                return _context.Policemans.Where(p => p.IsActive && p.PolicemanId == data.PolicemanId).Include(p => p.Patrols).ThenInclude(p => p.PoliceCar).First();
             }
             return null;
         }

@@ -39,10 +39,10 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID"  Width="30" DisplayMemberBinding="{Binding Region_MiastaId}" />
-                    <GridViewColumn x:Name="NazwaHeader" Header="Nazwa" Width="130" DisplayMemberBinding="{Binding Nazwa}"/>
-                    <GridViewColumn x:Name="MiastoHeader" Header="Miasto"  Width="130" DisplayMemberBinding="{Binding Miasto.Nazwa}"/>
-                    <GridViewColumn x:Name="StopienHeader" Header="Stopień zagrożenia"  Width="160" DisplayMemberBinding="{Binding Stopien_zagrozenia}"/>
+                    <GridViewColumn x:Name="IdHeader" Header="ID"  Width="30" DisplayMemberBinding="{Binding Region_CityId}" />
+                    <GridViewColumn x:Name="NazwaHeader" Header="Name" Width="130" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn x:Name="MiastoHeader" Header="City"  Width="130" DisplayMemberBinding="{Binding City.Name}"/>
+                    <GridViewColumn x:Name="StopienHeader" Header="Stopień zagrożenia"  Width="160" DisplayMemberBinding="{Binding DangerStage}"/>
                 </GridView>
             </ListView.View>
         </ListView>

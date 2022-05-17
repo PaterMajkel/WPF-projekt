@@ -28,11 +28,11 @@
         <ListView Name="ListViewColumns" Margin="58,102,58,102">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding RadiowozId}" />
-                    <GridViewColumn x:Name="DataRHeader" Header="Data Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding Data_rozpoczecia}"/>
-                    <GridViewColumn x:Name="DataZHeader" Header="Data Zakończenia"  Width="150" DisplayMemberBinding="{Binding Data_zakonczenia}"/>
-                    <GridViewColumn x:Name="GodzinaRHeader" Header="Godzina Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding Godzina_rozpoczecia}"/>
-                    <GridViewColumn x:Name="GodzinaZHeader" Header="Godzina Zakończenia"  Width="150" DisplayMemberBinding="{Binding Godzina_zakonczenia}"/>
+                    <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
+                    <GridViewColumn x:Name="DataRHeader" Header="Date Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding Start_Date}"/>
+                    <GridViewColumn x:Name="DataZHeader" Header="Date Zakończenia"  Width="150" DisplayMemberBinding="{Binding Data_zakonczenia}"/>
+                    <GridViewColumn x:Name="GodzinaRHeader" Header="Hour Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding Start_Hour}"/>
+                    <GridViewColumn x:Name="GodzinaZHeader" Header="Hour Zakończenia"  Width="150" DisplayMemberBinding="{Binding End_hour}"/>
 
                 </GridView>
             </ListView.View>

@@ -30,9 +30,9 @@ namespace WpfApp1
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-        public MainWindow(Uzytkownik uzytkownik)
+        public MainWindow(User uzytkownik)
         {
-            if (uzytkownik.Rola == "Admin")
+            if (uzytkownik.Role == "Admin")
                 AdminPanel.IsEnabled=true;
             UserPanel.IsEnabled = true;
             InitializeComponent();
@@ -53,8 +53,8 @@ namespace WpfApp1
 
         private void UserPanel_Click(object sender, RoutedEventArgs e)
         {
-            Window paneluzytkownika = new PanelUzytkownika();
-            paneluzytkownika.Show();
+            Window userPanel = new UserPanel();
+            userPanel.Show();
 
         }
     }

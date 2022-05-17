@@ -22,7 +22,7 @@ namespace PoliceApp
     public partial class PlanCheckPage : Page
     {
         private SharedData singleton = SharedData.GetInstance(null);
-        private Uzytkownik uzytkownik;
+        private User uzytkownik;
         private DatabaseService databaseService = new();
         private bool IdOrder = false;
         public PlanCheckPage()
@@ -30,7 +30,7 @@ namespace PoliceApp
             uzytkownik = databaseService.GetUzytkownikByObj(singleton.uzytkownik);
 
             InitializeComponent();
-            ListViewColumns.ItemsSource = uzytkownik.Policjant.Patrols;
+            ListViewColumns.ItemsSource = uzytkownik.Policeman.Patrols;
             //AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(ListView_OnColumnClick));
 
         }

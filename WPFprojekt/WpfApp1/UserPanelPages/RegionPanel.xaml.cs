@@ -23,11 +23,11 @@ namespace PoliceApp
     public partial class RegionPanel : Page
     {
         public bool IdOrder = false;
-        public ICollection<Region_Miasta> data;
+        public ICollection<Region_City> data;
         private DatabaseService databaseService = new();
         private string[] levels = { "Niski", "Średni", "Wysoki", "Śmiertelny" };
         private bool editMode = false;
-        private Region_Miasta selectedToEdit;
+        private Region_City selectedToEdit;
         public RegionPanel()
         {
             data = databaseService.getRegions();
@@ -39,7 +39,7 @@ namespace PoliceApp
 
         private void Change_Click(object sender, RoutedEventArgs e)
         {
-            selectedToEdit.Stopien_zagrozenia = EditBox.SelectedItem.ToString() ;
+            selectedToEdit.DangerStage = EditBox.SelectedItem.ToString() ;
             databaseService.editRegion(selectedToEdit);
             RefreshData();
         }
@@ -55,35 +55,35 @@ namespace PoliceApp
                     {
                         if(!IdOrder)
                         {
-                            data = data.OrderByDescending(id => id.Region_MiastaId).ToList();
+                            data = data.OrderByDescending(id => id.Region_CityId).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        data = data.OrderBy(id => id.Region_MiastaId).ToList();
+                        data = data.OrderBy(id => id.Region_CityId).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Miasto":
+                case "City":
                     {
                         if (!IdOrder)
                         {
-                            data = data.OrderByDescending(id => id.Miasto.Nazwa).ToList();
+                            data = data.OrderByDescending(id => id.City.Name).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        data = data.OrderBy(id => id.Miasto.Nazwa).ToList();
+                        data = data.OrderBy(id => id.City.Name).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Nazwa":
+                case "Name":
                     {
                         if (!IdOrder)
                         {
-                            data = data.OrderByDescending(id => id.Nazwa).ToList();
+                            data = data.OrderByDescending(id => id.Name).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        data = data.OrderBy(id => id.Nazwa).ToList();
+                        data = data.OrderBy(id => id.Name).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
@@ -91,11 +91,11 @@ namespace PoliceApp
                     {
                         if (!IdOrder)
                         {
-                            data = data.OrderByDescending(id => id.Stopien_zagrozenia).ToList();
+                            data = data.OrderByDescending(id => id.DangerStage).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        data = data.OrderBy(id => id.Stopien_zagrozenia).ToList();
+                        data = data.OrderBy(id => id.DangerStage).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
@@ -116,8 +116,8 @@ namespace PoliceApp
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
             editMode = true;
-            EditBox.SelectedItem = ((Region_Miasta)ListViewColumns.SelectedItem).Stopien_zagrozenia;
-            selectedToEdit = (Region_Miasta)ListViewColumns.SelectedItem;
+            EditBox.SelectedItem = ((Region_City)ListViewColumns.SelectedItem).DangerStage;
+            selectedToEdit = (Region_City)ListViewColumns.SelectedItem;
 
         }
 

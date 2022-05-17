@@ -24,16 +24,16 @@
         </Rectangle>
         <Label Content="Plan Służby Policjanta:" FontFamily="Cooper Black"
   FontSize="36" HorizontalAlignment="Left" Margin="76,39,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Nazwa" HorizontalAlignment="Left" Margin="511,44,0,0" VerticalAlignment="Top"
+        <Label x:Name="Name" HorizontalAlignment="Left" Margin="511,44,0,0" VerticalAlignment="Top"
             FontStyle="Oblique" FontSize="28" Width="377" Height="42" ></Label>
         <ListView Name="ListViewColumns" Margin="58,102,58,102">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding RadiowozId}" />
-                    <GridViewColumn x:Name="DataRHeader" Header="Data Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding  Data_rozpoczecia}"/>
-                    <GridViewColumn x:Name="DataZHeader" Header="Data Zakończenia"  Width="150" DisplayMemberBinding="{Binding  Data_zakonczenia}"/>
-                    <GridViewColumn x:Name="GodzinaRHeader" Header="Godzina Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding  Godzina_rozpoczecia}"/>
-                    <GridViewColumn x:Name="GodzinaZHeader" Header="Godzina Zakończenia"  Width="150" DisplayMemberBinding="{Binding  Godzina_zakonczenia}"/>
+                    <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
+                    <GridViewColumn x:Name="DataRHeader" Header="Date Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding  Start_Date}"/>
+                    <GridViewColumn x:Name="DataZHeader" Header="Date Zakończenia"  Width="150" DisplayMemberBinding="{Binding  Data_zakonczenia}"/>
+                    <GridViewColumn x:Name="GodzinaRHeader" Header="Hour Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding  Start_Hour}"/>
+                    <GridViewColumn x:Name="GodzinaZHeader" Header="Hour Zakończenia"  Width="150" DisplayMemberBinding="{Binding  End_hour}"/>
 
                 </GridView>
             </ListView.View>

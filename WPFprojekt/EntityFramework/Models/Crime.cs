@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace EntityFramework.Models
 {
-    public class Patrol
+    public class Crime
     {
         [Key]
-        public int PatrolId { get; set; }
-        public int PoliceCarId { get; set; }
-        public PoliceCar PoliceCar { get; set; }
+        public int PrzestepstwoId { get; set; }
+        public string Name { get; set; }
+        public string Date { get; set; }
+        public string Hour { get; set; }
         public ICollection<Policeman> Policemans { get; set; }
-        public string Start_Date { get; set; }
-        public string Data_zakonczenia { get; set; }
-        public string Start_Hour { get; set; }
-        public string End_hour { get; set; }
+        public ICollection<Register> Registers { get; set; }
         [Required]
         public bool IsActive { get; set; } = true;
     }

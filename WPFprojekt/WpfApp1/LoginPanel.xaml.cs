@@ -45,12 +45,12 @@ namespace PoliceApp
             SharedData.RemoveInstance();
             foreach (var button in buttons)
                 button.IsEnabled = false;
-            var x = databaseService.GetUzytkownik(login, passwordBox.Password.ToString());
+            var x = databaseService.GetUsers(login, passwordBox.Password.ToString());
             if (x != null)
             {
                 uzytkownik = SharedData.GetInstance(uzytkownik: x);
                 buttons[0].IsEnabled = true;
-                if (x.Rola.ToUpper() == "ADMIN")
+                if (x.Role.ToUpper() == "ADMIN")
                     buttons[1].IsEnabled = true;
                 Close();
                 return;
