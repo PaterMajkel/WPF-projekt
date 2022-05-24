@@ -29,8 +29,8 @@ namespace PoliceApp
         private bool IdOrder = false;
         public Suborneds()
         {
-            var policjant = databaseService.GetUzytkownikByObj(user.uzytkownik);
-            data = databaseService.GetPodwladni(policjant.Policeman);
+            var policjant = databaseService.GetUserByObj(user.uzytkownik);
+            data = databaseService.GetSubordinates(policjant.Policeman);
             radiowozy = databaseService.GetPoliceCars();
             InitializeComponent();
             ListViewColumns.ItemsSource = data;
@@ -149,8 +149,8 @@ namespace PoliceApp
         }
         public void RefreshData()
         {
-            var policjant = databaseService.GetUzytkownikByObj(user.uzytkownik);
-            data = databaseService.GetPodwladni(policjant.Policeman);
+            var policjant = databaseService.GetUserByObj(user.uzytkownik);
+            data = databaseService.GetSubordinates(policjant.Policeman);
             radiowozy = databaseService.GetPoliceCars();
             ListViewColumns.ItemsSource = data;
             RadiowozBox.ItemsSource = radiowozy;

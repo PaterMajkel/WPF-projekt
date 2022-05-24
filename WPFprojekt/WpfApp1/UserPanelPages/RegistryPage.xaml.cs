@@ -119,7 +119,7 @@ namespace PoliceApp
                 return;
             }
 
-            databaseService.AddKartotekas(new Register {FirstName=imie,Surname=nazwisko,Age=wiek,Picture=pickedImage});
+            databaseService.AddRegistry(new Register {FirstName=imie,Surname=nazwisko,Age=wiek,Picture=pickedImage});
             RefreshData();
             pickedImage = null;
         }
@@ -149,7 +149,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeleteKartotekas(selected);
+            databaseService.DeleteRegistries(selected);
             foreach (var element in selected)
                 data.Remove(element);
             ListViewColumns.ItemsSource = null;

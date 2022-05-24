@@ -37,7 +37,7 @@ namespace PoliceApp
         {
             InitializeComponent();
             data = databaseService.GetPoliceStations();
-            miasta = databaseService.GetMiastos();
+            miasta = databaseService.GetCities();
              AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(ListView_OnColumnClick));
             //foreach (var x in data)
             //{
@@ -168,7 +168,7 @@ namespace PoliceApp
         private void ComboBoxMiasto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             pickedMiasto= (City)MiastoBox.SelectedItem;
-            regiony = databaseService.getRegionsOfMiasto(pickedMiasto);
+            regiony = databaseService.GetRegionsOfCity(pickedMiasto);
             RegionBox.ItemsSource = regiony;
         }
 
@@ -193,7 +193,7 @@ namespace PoliceApp
                     return;
                 }
 
-                databaseService.AddKomenda(new PoliceStation {Address = adres, Region_CityId = pickedRegion.Region_CityId, Region_City = pickedRegion });
+                databaseService.AddPoliceStation(new PoliceStation {Address = adres, Region_CityId = pickedRegion.Region_CityId, Region_City = pickedRegion });
                 RefreshData();
                 return;
             }
@@ -211,7 +211,7 @@ namespace PoliceApp
         private void RefreshData()
         {
             data = databaseService.GetPoliceStations();
-            miasta = databaseService.GetMiastos();
+            miasta = databaseService.GetCities();
             ListViewColumns.ItemsSource = data;
             MiastoBox.ItemsSource = miasta;
         }

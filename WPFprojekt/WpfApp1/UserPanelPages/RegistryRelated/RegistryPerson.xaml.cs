@@ -44,7 +44,7 @@ namespace PoliceApp
         private DatabaseService databaseService = new();
         public RegistryPerson(Register osoba)
         {
-            register = databaseService.getKartotekaByObj(osoba);
+            register = databaseService.GetRegistryByObj(osoba);
             //Console.WriteLine(register.Surname);
             InitializeComponent();
             FirstName.Content = register.FirstName;

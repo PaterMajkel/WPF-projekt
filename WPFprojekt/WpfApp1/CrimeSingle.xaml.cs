@@ -32,7 +32,7 @@ namespace PoliceApp
         public bool IdOrder = false;
         public CrimeSingle(Crime przes)
         {
-            przestepstwo = databaseService.getPrzestepstwoByObj(przes);
+            przestepstwo = databaseService.GetCrimeByObj(przes);
             InitializeComponent();
             register = databaseService.GetRegisters();
             policjant = databaseService.GetPolicemenAndRank();
@@ -176,13 +176,13 @@ namespace PoliceApp
                 {
                     MessageBox.Show("Dana osoba nie może uczystniczyć w jednym wydarzeniu kilkukrotnie", "Co Ty wyprawiasz?", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                databaseService.AddKartotekaToPrzestepstwo(przestepstwo, pickedKartoteka);
+                databaseService.AddRegistryToCrime(przestepstwo, pickedKartoteka);
             }
             Refresh();
         }
         private void Refresh()
         {
-            przestepstwo = databaseService.getPrzestepstwoByObj(przestepstwo);
+            przestepstwo = databaseService.GetCrimeByObj(przestepstwo);
             register = databaseService.GetRegisters();
             policjant = databaseService.GetPolicemenAndRank();
 
@@ -205,7 +205,7 @@ namespace PoliceApp
                 {
                     MessageBox.Show("Dana osoba nie może uczystniczyć w jednym wydarzeniu kilkukrotnie", "Co Ty wyprawiasz?", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                databaseService.AddPolicjatToPrzestepstwo(przestepstwo, pickedPolicjant);
+                databaseService.AddPolicemanToCrime(przestepstwo, pickedPolicjant);
             }
             Refresh();
         }
@@ -217,7 +217,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeletePolicjantsFromPrzestepstwo(przestepstwo, pickedPolicjants);
+            databaseService.DeletePolicemenFromCrime(przestepstwo, pickedPolicjants);
             //usuwanie lokalne, aby nie pobierać od nowa informacji
             Refresh();
 
@@ -230,7 +230,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeleteSprawcaFromPrzestepstwo(przestepstwo, pickedSprawcy);
+            databaseService.DeleteFelonFromCrime(przestepstwo, pickedSprawcy);
             //usuwanie lokalne, aby nie pobierać od nowa informacji
             Refresh();
 

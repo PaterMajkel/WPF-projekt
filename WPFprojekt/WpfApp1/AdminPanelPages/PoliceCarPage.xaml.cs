@@ -118,7 +118,7 @@ namespace PoliceApp
                     return;
                 }
                 for (int i = 0; i < ilosc; i++)
-                    databaseService.AddRadiowozos(new PoliceCar { Model = model, Brand = marka, ProductionYear = (int)rocznik });
+                    databaseService.AddPoliceCar(new PoliceCar { Model = model, Brand = marka, ProductionYear = (int)rocznik });
                 RefreshData();
                 return;
             }
@@ -126,7 +126,7 @@ namespace PoliceApp
             selectedToEdit.Brand = Brand.Text;
             selectedToEdit.ProductionYear= int.Parse(Rocznik.Text);
 
-            databaseService.EditRadiowoz(selectedToEdit);
+            databaseService.EditPoliceCar(selectedToEdit);
             AbortChange();
             RefreshData();
 
@@ -157,7 +157,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeleteRadiowozos(selected);
+            databaseService.DeletePoliceCars(selected);
             foreach (var element in selected)
                 data.Remove(element);
             ListViewColumns.ItemsSource = null;

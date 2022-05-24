@@ -42,7 +42,7 @@ namespace PoliceApp
 
         public PolicemenPage()
         {
-            data = databaseService.GetUzytkowniks();
+            data = databaseService.GetUsers();
             InitializeComponent();
             ListViewColumns.ItemsSource = data;
             ranga = databaseService.GetRanks();
@@ -131,7 +131,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeleteUzytkowniks(selected);
+            databaseService.DeleteUsers(selected);
             //usuwanie lokalne, aby nie pobierać od nowa informacji
             foreach (var element in selected)
             {
@@ -167,7 +167,7 @@ namespace PoliceApp
         }
         private void RefreshData()
         {
-            data = databaseService.GetUzytkowniks();
+            data = databaseService.GetUsers();
             ListViewColumns.ItemsSource = data;
             ranga = databaseService.GetRanks();
             komenda = databaseService.GetPoliceStations();
@@ -226,7 +226,7 @@ namespace PoliceApp
  
                 policjant = new Policeman { FirstName = Name.Text, Surname = Sunrame.Text, PoliceStationId = ((PoliceStation)KomendaBox.SelectedItem).PoliceStationId, RangaId = ((Rank)RangaBox.SelectedItem).RangaId};
 
-                databaseService.AddUzytkownik(new User { Login = Login.Text, Password = Password.Text, Role = isAdmin ? "Admin" : "" }, policjant);
+                databaseService.AddUser(new User { Login = Login.Text, Password = Password.Text, Role = isAdmin ? "Admin" : "" }, policjant);
                 RefreshData();
                 return;
             }
@@ -241,7 +241,7 @@ namespace PoliceApp
             selectedToEdit.Password = Password.Text;
 
 
-            databaseService.EditUzytkownik(selectedToEdit);
+            databaseService.EditUser(selectedToEdit);
             AbortChange();
             RefreshData();
 

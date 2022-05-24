@@ -33,7 +33,7 @@ namespace PoliceApp
         public Felony wykroczeniepom;
         public FelonySingle(Felony wykro)
         {
-            wykroczenia = databaseService.getWykroczenieByObj(wykro);
+            wykroczenia = databaseService.GetFelonyByObj(wykro);
             register = databaseService.GetRegisters();
             policjant = databaseService.GetPolicemenAndRank();
             InitializeComponent();
@@ -170,7 +170,7 @@ namespace PoliceApp
         }
         private void Refresh()
         {
-            wykroczenia = databaseService.getWykroczenieByObj(wykroczenia);
+            wykroczenia = databaseService.GetFelonyByObj(wykroczenia);
             register = databaseService.GetRegisters();
             policjant = databaseService.GetPolicemenAndRank();
 
@@ -193,7 +193,7 @@ namespace PoliceApp
                 {
                     MessageBox.Show("Dana osoba nie może uczystniczyć w jednym wydarzeniu kilkukrotnie", "Co Ty wyprawiasz?", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                databaseService.AddPolicjantToWykroczenie(wykroczenia, pickedPolicjant);
+                databaseService.AddPolicemanToFelony(wykroczenia, pickedPolicjant);
             }
             Refresh();
         }
@@ -207,7 +207,7 @@ namespace PoliceApp
                 {
                     MessageBox.Show("Dana osoba nie może uczystniczyć w jednym wydarzeniu kilkukrotnie", "Co Ty wyprawiasz?", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                databaseService.AddKartotekaToWykroczenie(wykroczenia, pickedKartoteka);
+                databaseService.AddRegistryToFelony(wykroczenia, pickedKartoteka);
             }
             Refresh();
         }
@@ -219,7 +219,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeletePolicjantsFromWykroczenie(wykroczenia, pickedPolicjants);
+            databaseService.DeletePolicemenFromFelony(wykroczenia, pickedPolicjants);
             //usuwanie lokalne, aby nie pobierać od nowa informacji
             Refresh();
 
@@ -232,7 +232,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeleteSprawcaFromWykroczenia(wykroczenia, pickedSprawcy);
+            databaseService.DeleteFelonFromFelony(wykroczenia, pickedSprawcy);
             //usuwanie lokalne, aby nie pobierać od nowa informacji
             Refresh();
 
