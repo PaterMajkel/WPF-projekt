@@ -5,54 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
-            Title="Logowanie" Height="450" Width="800" WindowStartupLocation="CenterScreen"  ResizeMode="NoResize">
+            Title="Logowanie" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="DodgerBlue" Offset="1" />
+                <GradientStop Color="DeepSkyBlue" Offset="1" />
                 <GradientStop Color="DarkBlue" Offset="0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="DeepSkyBlue">
-            <Button Content="Zaloguj się" Background="CadetBlue" Margin="479,273,138,84" Click="Button_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Border>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Width="369">
-                <Image Source="/Police2.png"  Height="312" VerticalAlignment="Top" Margin="29,30,12,30" Stretch="Fill" RenderTransformOrigin="0.5,0.5" >
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleX="-8.012"/>
-                            <RotateTransform Angle="-3.116"/>
-                            <TranslateTransform X="-21.113"/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                </Image>
+        <Grid Grid.Column="0">
+            <Image Source="/Police2.png" Margin="50, 50" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-8.012"/>
+                        <RotateTransform Angle="-3.116"/>
+                        <TranslateTransform X="-21.113"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Text="Panel Logowania" FontSize="40" FontStyle="Oblique" VerticalAlignment="Top" />
+                <TextBlock Text="Login"/>
+                <TextBox Name="loginBox" FontSize="22" Background="LightGray" TextChanged="TextBox_TextChanged" MaxWidth="390" Margin="5, 0"/>
+                <TextBlock Text="Haslo"/>
+                <PasswordBox Name="passwordBox" MaxLength="16" FontSize="22" Background="LightGray" MaxWidth="390" Margin="5, 0"/>
+                <Button Content="Zaloguj się" Click="Button_Click"/>
             </StackPanel>
-            <StackPanel Width="350">
-                <StackPanel Margin="20 40" Height="229">
-                    <StackPanel Orientation="Horizontal" Margin="10"/>
-                    <StackPanel Orientation="Horizontal" Margin="10"/>
-                    <StackPanel Margin="10" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Width="100"/>
-        </StackPanel>
-
-        <TextBlock HorizontalAlignment="Left" Margin="479,203,0,0" TextWrapping="Wrap" Text="Haslo" VerticalAlignment="Top" Width="141"/>
-        <TextBox Name="loginBox" HorizontalAlignment="Left" Height="23" Margin="479,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" FontSize="15"
-                 Background="LightGray" TextChanged="TextBox_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="479,154,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="84"/>
-        <TextBlock HorizontalAlignment="Left" Margin="479,107,0,0" TextWrapping="Wrap" Text="Panel Logowania" VerticalAlignment="Top" Height="42" Width="214" 
-                   FontSize="25" FontStyle="Oblique"/>
-        <PasswordBox Name="passwordBox" MaxLength="16" 
-              Margin="479,225,122,166" Background="LightGray" FontSize="15"/>
-
+        <Grid.Resources>
+                <Style TargetType="Button">
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Style.Resources>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="Background" Value="CadetBlue"/>
+                    <Setter Property="Margin" Value="10,30"/>
+                    <Setter Property="MaxWidth" Value="400"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="0, 15, 0, 5"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
     </Grid>
+    
 </Window>

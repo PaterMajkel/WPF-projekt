@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" SizeToContent="Manual" WindowState="Normal"  Background="#FF85D8FF">
+        Title="Panel Główny" Height="450" Width="800" SizeToContent="Manual" WindowState="Normal"  Background="#FF85D8FF">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -13,39 +13,50 @@
                 <GradientStop Color="DarkBlue" Offset="0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Rectangle  HorizontalAlignment="Center" Height="347" Stroke="Black" VerticalAlignment="Top" Width="716" Margin="0,50,0,0">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                    <GradientStop Color="DeepSkyBlue" Offset="1" />
-                    <GradientStop Color="RoyalBlue" Offset="0" />
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Button Content="Panel Logowania" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Width="660" Height="66" Background="CadetBlue"
-                FontSize="25" Click="Login_Button_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="0" Grid.RowSpan="4" Stroke="Black" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                        <GradientStop Color="DeepSkyBlue" Offset="1" />
+                        <GradientStop Color="RoyalBlue" Offset="0" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Panel Główny" VerticalAlignment="Center"
+                       FontStyle="Oblique" FontSize="35"/>
+            <Button Grid.Row="1" Content="Panel Logowania" Click="Login_Button_Click"/>
+            <Button Grid.Row="2" Name="UserPanel" IsEnabled="False" Content="Panel Policjanta" Click="UserPanel_Click"/>
+            <Button Grid.Row="3" Name="AdminPanel" IsEnabled="False" Content="Panel Administratora" Click="AdminPanel_Click"/>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Style.Resources>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="Background" Value="CadetBlue"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="Margin" Value="30,10"/>
                 </Style>
-            </Button.Resources>
-        </Button>
-        <Button Name="UserPanel" IsEnabled="False" Content="Panel Policjanta" HorizontalAlignment="Center" VerticalAlignment="Top" Width="660" Height="66" Background="CadetBlue"
-                FontSize="25" Margin="0,222,0,0" Click="UserPanel_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Name="AdminPanel" IsEnabled="False" Content="Panel Administratora" HorizontalAlignment="Center" Margin="0,293,0,0" VerticalAlignment="Top" Width="660" Height="66" Background="CadetBlue"
-                FontSize="25" Click="AdminPanel_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBlock HorizontalAlignment="Center" Margin="0,85,0,0" TextWrapping="Wrap" Text="Panel Główny" VerticalAlignment="Top" Height="48" Width="448" FontStyle="Oblique"
-                   FontSize="35"/>
+            </Grid.Resources>
+        </Grid>
     </Grid>
 </Window>

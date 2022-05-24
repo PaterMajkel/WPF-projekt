@@ -6,14 +6,18 @@
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d" 
       Title="Podwładni" Height="516" Width="946">
-    <Grid >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="Blue" Offset="0.0" />
                 <GradientStop Color="Cyan" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
+        <!--<Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
         <Rectangle HorizontalAlignment="Left" Height="445" Margin="24,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="904">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -21,44 +25,88 @@
                     <GradientStop Color="Cyan" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
-        </Rectangle>
-        <ListView  MouseDoubleClick="ListView_MouseDoubleClick" Name="ListViewColumns" Margin="61,115,380,75" ItemsSource="{Binding TrackCollection}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding PolicemanId}" />
-                    <GridViewColumn x:Name="ImieHeader" Header="FirstName" Width="110" DisplayMemberBinding="{Binding FirstName}"/>
-                    <GridViewColumn x:Name="SurnameHeader" Header="Surname"  Width="100" DisplayMemberBinding="{Binding Surname}"/>
-                    <GridViewColumn x:Name="RangaHeader" Header="Ranga"  Width="60" DisplayMemberBinding="{Binding Ranga.Name}"/>
-                    <GridViewColumn x:Name="KomendaHeader" Header="PoliceStation adres"  Width="120" DisplayMemberBinding="{Binding PoliceStation.Address}"/>
+        </Rectangle>-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.ColumnSpan="2" Content="Ustawienie Planu Podwładnemu" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Cooper Black" FontSize="36" />
+            <Button Grid.Column="1" Content="Refresh" MinWidth="100" Click="Button_Click"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0" MouseDoubleClick="ListView_MouseDoubleClick" Margin="20" Name="ListViewColumns" MaxWidth="410" ItemsSource="{Binding TrackCollection}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding PolicemanId}" />
+                        <GridViewColumn x:Name="ImieHeader" Header="FirstName" Width="110" DisplayMemberBinding="{Binding FirstName}"/>
+                        <GridViewColumn x:Name="SurnameHeader" Header="Surname"  Width="100" DisplayMemberBinding="{Binding Surname}"/>
+                        <GridViewColumn x:Name="RangaHeader" Header="Ranga"  Width="60" DisplayMemberBinding="{Binding Ranga.Name}"/>
+                        <GridViewColumn x:Name="KomendaHeader" Header="PoliceStation adres"  Width="120" DisplayMemberBinding="{Binding PoliceStation.Address}"/>
 
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="825,52,0,0" VerticalAlignment="Top" Height="28" Width="88" Background="CadetBlue" Click="Button_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Label Content="Ustawienie Planu Podwładnemu" FontFamily="Cooper Black"
-  FontSize="36" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Height="53"/>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="706,353,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,-1.782" Height="28" Width="88" Click="Button_Click_Dodaj" Background="CadetBlue">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <ComboBox Name="RadiowozBox" HorizontalAlignment="Left" Margin="690,161,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="PoliceCarId"/>
-        <Label Content="Radiowóz ID"  FontSize="15" HorizontalAlignment="Left" Margin="704,131,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Data_roz" HorizontalAlignment="Left" Margin="608,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="20"/>
-        <TextBox x:Name="Godzina_roz"  Height="20" HorizontalAlignment="Left" Margin="766,297,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
-        <TextBox x:Name="Data_zak" HorizontalAlignment="Left" Margin="608,297,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"  Height="20"/>
-        <TextBox x:Name="Godzina_Zak"  Height="20" HorizontalAlignment="Left" Margin="766,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
-        <Label Content="Date Rozpoczęcia"  FontSize="15" HorizontalAlignment="Left" Margin="603,202,0,0" VerticalAlignment="Top"/>
-        <Label Content="Hour Rozpoczęcia"  FontSize="15" HorizontalAlignment="Left" Margin="762,202,0,0" VerticalAlignment="Top"/>
-        <Label Content="Date Zakończenia" FontSize="15" HorizontalAlignment="Left" Margin="603,271,0,0" VerticalAlignment="Top"/>
-        <Label Content="Hour Zakończenia" FontSize="15" HorizontalAlignment="Left" Margin="762,271,0,0" VerticalAlignment="Top"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label Content="Radiowóz ID" FontSize="20"/>
+                        <ComboBox Name="RadiowozBox" DisplayMemberPath="PoliceCarId"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label Content="Date Rozpoczęcia" FontSize="20"/>
+                        <TextBox x:Name="Data_roz" Text="" FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label Content="Hour Rozpoczęcia" FontSize="20"/>
+                        <TextBox x:Name="Godzina_roz" FontSize="20" Text=""/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label Content="Date Zakończenia" FontSize="20"/>
+                        <TextBox x:Name="Data_zak" FontSize="20" Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label Content="Hour Zakończenia" FontSize="20"/>
+                        <TextBox x:Name="Godzina_Zak"  FontSize="20" Text=""/>
+                    </StackPanel>
+                </Grid>
+                <Button Grid.Row="3" Content="Dodaj" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.422,-1.782" MinWidth="100" Click="Button_Click_Dodaj"/>
+            </Grid>
+        </Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Style.Resources>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Background" Value="CadetBlue"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Margin" Value="10, 5"/>
+            </Style>
+        </Grid.Resources>
     </Grid>
 </Page>
