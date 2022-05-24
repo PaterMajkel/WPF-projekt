@@ -100,7 +100,7 @@ namespace PoliceApp
                 MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.AddWykroczenias(new Felony { Name = nazwa, Date = dzien, Hour = godzina });
+            databaseService.AddFelony(new Felony { Name = nazwa, Date = dzien, Hour = godzina });
             Refresh();
         }
         private void Refresh()
@@ -137,7 +137,7 @@ namespace PoliceApp
                 MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            databaseService.DeleteWykroczenias(selected);
+            databaseService.DeleteFelonies(selected);
             foreach (var element in selected)
                 data.Remove(element);
             ListViewColumns.ItemsSource = null;

@@ -27,7 +27,7 @@ namespace PoliceApp
         private bool IdOrder = false;
         public PlanCheckPage()
         {
-            uzytkownik = databaseService.GetUzytkownikByObj(singleton.uzytkownik);
+            uzytkownik = databaseService.GetUserByObj(singleton.uzytkownik);
 
             InitializeComponent();
             ListViewColumns.ItemsSource = uzytkownik.Policeman.Patrols;

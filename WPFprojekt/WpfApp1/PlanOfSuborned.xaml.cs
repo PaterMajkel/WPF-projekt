@@ -30,7 +30,7 @@ namespace PoliceApp
         public PlanOfSuborned(Policeman pato)
         {
             InitializeComponent();
-            policjant = databaseService.GetPolicjantByObj(pato);
+            policjant = databaseService.GetPolicemanByObj(pato);
             Name.Content = policjant.PolicemanId;
             ListViewColumns.ItemsSource = policjant.Patrols;
         }

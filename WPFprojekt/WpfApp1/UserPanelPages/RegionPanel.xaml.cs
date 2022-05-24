@@ -30,7 +30,7 @@ namespace PoliceApp
         private Region_City selectedToEdit;
         public RegionPanel()
         {
-            data = databaseService.getRegions();
+            data = databaseService.GetRegions();
             InitializeComponent();
             AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(ListView_OnColumnClick));
             ListViewColumns.ItemsSource = data;
@@ -40,7 +40,7 @@ namespace PoliceApp
         private void Change_Click(object sender, RoutedEventArgs e)
         {
             selectedToEdit.DangerStage = EditBox.SelectedItem.ToString() ;
-            databaseService.editRegion(selectedToEdit);
+            databaseService.EditRegion(selectedToEdit);
             RefreshData();
         }
 
@@ -109,7 +109,7 @@ namespace PoliceApp
         }
         private void RefreshData()
         {
-            data = databaseService.getRegions();
+            data = databaseService.GetRegions();
             ListViewColumns.ItemsSource = data;
         }
 
