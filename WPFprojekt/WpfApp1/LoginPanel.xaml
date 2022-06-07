@@ -33,9 +33,9 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <TextBlock Text="Panel Logowania" FontSize="40" FontStyle="Oblique" VerticalAlignment="Top" />
                 <TextBlock Text="Login"/>
-                <TextBox Name="loginBox" FontSize="22" Background="LightGray" TextChanged="TextBox_TextChanged" MaxWidth="390" Margin="5, 0"/>
+                <TextBox Name="loginBox" FontSize="22" TextChanged="TextBox_TextChanged" MaxWidth="390" Margin="5, 0"/>
                 <TextBlock Text="Haslo"/>
-                <PasswordBox Name="passwordBox" MaxLength="16" FontSize="22" Background="LightGray" MaxWidth="390" Margin="5, 0"/>
+                <PasswordBox Name="passwordBox" MaxLength="16" FontSize="22" MaxWidth="390" Margin="5, 0"/>
                 <Button Content="Zaloguj się" Click="Button_Click"/>
             </StackPanel>
         <Grid.Resources>

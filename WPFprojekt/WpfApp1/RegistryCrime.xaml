@@ -7,14 +7,18 @@
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
         mc:Ignorable="d"
        Title="Kartoteka Zdarzenie " Height="516" Width="946">
-    <Grid >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="Blue" Offset="0.0" />
                 <GradientStop Color="Cyan" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
+        <!--<Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
         <Rectangle HorizontalAlignment="Left" Height="400" Margin="24,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="904">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -22,41 +26,86 @@
                     <GradientStop Color="Cyan" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
-        </Rectangle>
-        <ListView  MouseDoubleClick="ListView_MouseDoubleClick" Name="ListViewColumns" Margin="43,96,397,94" ItemsSource="{Binding TrackCollection}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding PrzestepstwoId}" />
-                    <GridViewColumn x:Name="NazwaHeader" Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn x:Name="DataHeader" Header="Date"  Width="110" DisplayMemberBinding="{Binding Date}"/>
-                    <GridViewColumn x:Name="GodzinaHeader" Header="Hour"  Width="70" DisplayMemberBinding="{Binding Hour}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="43,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Cooper Black"
-            FontStyle="Oblique" FontSize="30" Width="391" Height="37" Text="Przestępstwo"/>
-        <TextBlock  HorizontalAlignment="Left" FontSize="20" Margin="681,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Name"/></TextBlock>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="26" Margin="682,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="18" TextChanged="Nazwa_TextChanged" />
-        <TextBox x:Name="Hour" HorizontalAlignment="Left" Height="26" Margin="681,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="18" TextChanged="Godzina_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" FontSize="20" Margin="682,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.505,3.88"><Run Language="pl-pl" Text="Date"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" FontSize="20" Margin="682,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"><Run Language="pl-pl" Text="Hour"/></TextBlock>
-        <Button x:Name="Delete" Content="Usuń" HorizontalAlignment="Left" Margin="755,341,0,0" VerticalAlignment="Top" Width="117" Height="31" Background="Red"
-            FontSize="18" Click="Button_Click_Usun">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Name="AddEdit" Content="Dodaj" HorizontalAlignment="Left" Margin="606,341,0,0" VerticalAlignment="Top" Width="117" Height="31" Background="CadetBlue"
-            FontSize="18"  Click="Button_Click_Dodaj">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBox x:Name="Date" HorizontalAlignment="Left" Height="26" Margin="682,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontSize="18" TextChanged="Data_TextChanged" />
+        </Rectangle>-->
+        <Grid Grid.Row="0">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontStyle="Oblique" FontSize="40" Text="Przestępstwo"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <ListView  MouseDoubleClick="ListView_MouseDoubleClick" Name="ListViewColumns" Margin="20" MaxWidth="410" ItemsSource="{Binding TrackCollection}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding PrzestepstwoId}" />
+                            <GridViewColumn x:Name="NazwaHeader" Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn x:Name="DataHeader" Header="Date"  Width="110" DisplayMemberBinding="{Binding Date}"/>
+                            <GridViewColumn x:Name="GodzinaHeader" Header="Hour"  Width="70" DisplayMemberBinding="{Binding Hour}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Column="1" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="30, 10">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock><Run Language="pl-pl" Text="Name"/></TextBlock>
+                        <TextBox x:Name="Name" TextChanged="Nazwa_TextChanged" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="20, 0">
+                        <TextBlock><Run Language="pl-pl" Text="Hour"/></TextBlock>
+                        <TextBox x:Name="Hour" TextChanged="Godzina_TextChanged"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20, 0">
+                        <TextBlock><Run Language="pl-pl" Text="Date"/></TextBlock>
+                        <TextBox x:Name="Date" TextChanged="Data_TextChanged" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="Delete" Content="Usuń" Background="Red" Click="Button_Click_Usun"/>
+                    <Button Grid.Column="1" Name="AddEdit" Content="Dodaj" Background="CadetBlue" Click="Button_Click_Dodaj"/>
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10" />
+                                </Style>
+                            </Style.Resources>
+                            <Setter Property="FontSize" Value="25"/>
+                            <Setter Property="Background" Value="CadetBlue"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="20, 40"/>
+                        </Style>
+                    </Grid.Resources>
+                </Grid>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="FontSize" Value="18"/>
+                    </Style>
+                </Grid.Resources>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
 

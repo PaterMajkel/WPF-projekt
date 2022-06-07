@@ -5,100 +5,163 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
-        Title="FelonySingle" Height="532" Width="916" ResizeMode="NoResize">
+        Title="FelonySingle" Height="532" Width="916">
     <Grid>
-        <Grid>
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                    <GradientStop Color="DodgerBlue" Offset="1" />
-                    <GradientStop Color="DarkBlue" Offset="0" />
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Rectangle  HorizontalAlignment="Left" Height="482" Margin="32,24,0,0" Stroke="Black" VerticalAlignment="Top" Width="855">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                <GradientStop Color="LightBlue" Offset="1" />
+                <GradientStop Color="Blue" Offset="0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <!--<Rectangle  HorizontalAlignment="Left" Height="482" Margin="32,24,0,0" Stroke="Black" VerticalAlignment="Top" Width="855">
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                         <GradientStop Color="DeepSkyBlue" Offset="1" />
                         <GradientStop Color="RoyalBlue" Offset="0" />
                     </LinearGradientBrush>
                 </Rectangle.Fill>
-            </Rectangle>
-            <TextBlock HorizontalAlignment="Left" Margin="43,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-                   FontStyle="Oblique" FontSize="25" Width="132"><Run Language="pl-pl" Text="Name:"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Margin="43,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="25" Width="86"><Run Language="pl-pl" Text="Date:"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Margin="43,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="25" Width="121"><Run Text="Hour"/><Run Language="pl-pl" Text=":"/></TextBlock>
-            <Label x:Name="Name" HorizontalAlignment="Left" Margin="139,41,0,0" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="28" Width="534" Height="42" ></Label>
-            <TextBlock HorizontalAlignment="Left" Margin="43,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="20" Width="81" Height="28"><Run Text="Sprawcy"/><Run Language="pl-pl" Text=":"/></TextBlock>
-            <ListView Name="ListViewColumnsSprawcy" Margin="38,242,526,14">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="IdHeader" Header="ID"  Width="30" DisplayMemberBinding="{Binding RegisterId}" />
-                        <GridViewColumn x:Name="ImieHeader" Header="FirstName" Width="100" DisplayMemberBinding="{Binding FirstName}"/>
-                        <GridViewColumn x:Name="SurnameHeader" Header="Surname"  Width="130" DisplayMemberBinding="{Binding Surname}"/>
-                        <GridViewColumn x:Name="WiekHeader" Header="Age"  Width="90" DisplayMemberBinding="{Binding Age}"/>
-
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <ListView x:Name="ListViewColumnsPolicjanci" Margin="408,242,44,14" >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="IdHeader1" Header="ID."  Width="30" DisplayMemberBinding="{Binding PolicemanId}" />
-                        <GridViewColumn x:Name="ImieHeader1" Header="FirstName." Width="100" DisplayMemberBinding="{Binding  FirstName}"/>
-                        <GridViewColumn x:Name="SurnameHeader1" Header="Surname."  Width="120" DisplayMemberBinding="{Binding  Surname}"/>
-                        <GridViewColumn x:Name="RangaHeader1" Header="Ranga."  Width="100" DisplayMemberBinding="{Binding Ranga.Name}"/>
-                        <GridViewColumn x:Name="KomendaHeader1" Header="KomendaID."  Width="100" DisplayMemberBinding="{Binding PoliceStationId}"/>
-
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <TextBlock HorizontalAlignment="Left" Margin="408,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-                FontStyle="Oblique" FontSize="20" Width="192" Height="27"><Run Language="pl-pl" Text="Policjanci na miejscu"/><Run Text=":"/></TextBlock>
-            <ComboBox Name="KartotekaBox" HorizontalAlignment="Left" Margin="43,182,0,0" VerticalAlignment="Top" Width="150" Height="25" DisplayMemberPath="RegisterId"/>
-            <Label Content="Wybierz osobę z kartoteki:" FontSize="15" HorizontalAlignment="Left" Margin="43,153,0,0" VerticalAlignment="Top" Width="197"/>
-            <ComboBox Name="PolicjantBox" HorizontalAlignment="Left" Margin="408,182,0,0" VerticalAlignment="Top" Width="150" Height="25" DisplayMemberPath="PolicemanId"/>
-            <Label Content="Wybierz policjanta:" FontSize="15" HorizontalAlignment="Left" Margin="408,153,0,0" VerticalAlignment="Top" Width="159"/>
-            <Button Name="AddSprawca" Content="Dodaj" HorizontalAlignment="Left" Margin="282,178,0,0" VerticalAlignment="Top" Width="107" Height="25" Background="CadetBlue"
-            FontSize="17" Click="AddSprawca_Click">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="DeleteSprawca" Content="Usuń" HorizontalAlignment="Left" Margin="282,209,0,0" VerticalAlignment="Top" Width="107" Height="24" Background="Red"
-            FontSize="17" Click="Delete_Sprawca_Click">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="Add_Policjant" Content="Dodaj" HorizontalAlignment="Left" Margin="765,182,0,0" VerticalAlignment="Top" Width="107" Height="25" Background="CadetBlue"
-                FontSize="17" Click="Add_Policjant_Click">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="Delete_Policjant" Content="Usuń" HorizontalAlignment="Left" Margin="765,209,0,0" VerticalAlignment="Top" Width="107" Height="24" Background="Red"
-                FontSize="17" Click="Delete_Policjant_Click">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="695,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-                FontStyle="Oblique" FontSize="28" Width="387"><Run Language="pl-pl" Text="Wykroczenie" FontFamily="Cooper Black"/></TextBlock>
-            <Label x:Name="Date" HorizontalAlignment="Left" Margin="114,77,0,0" VerticalAlignment="Top"
-                FontStyle="Oblique" FontSize="28" Width="534" Height="42" />
-            <Label x:Name="Hour" HorizontalAlignment="Left" Margin="160,115,0,0" VerticalAlignment="Top"
-                FontStyle="Oblique" FontSize="28" Width="534" Height="42" />
+            </Rectangle>-->
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Margin="0, 0, 0, 10" FontSize="28" HorizontalAlignment="Center"><Run Language="pl-pl" Text="Wykroczenie" FontFamily="Cooper Black"/></TextBlock>
+                <StackPanel Grid.Row="1">
+                    <TextBlock><Run Language="pl-pl" Text="Name:"/></TextBlock>
+                    <Label x:Name="Name"></Label>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <TextBlock><Run Language="pl-pl" Text="Date:"/></TextBlock>
+                    <Label x:Name="Date"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3">
+                    <TextBlock><Run Language="pl-pl" Text="Hour:"/></TextBlock>
+                    <Label x:Name="Hour"/>
+                </StackPanel>
+            <Grid.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Orientation" Value="Horizontal"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontStyle" Value="Oblique"/>
+                    <Setter Property="Margin" Value="10, 0"/>
+                    <Setter Property="FontSize" Value="25"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="FontStyle" Value="Oblique"/>
+                    <Setter Property="Margin" Value="10, 0"/>
+                    <Setter Property="FontSize" Value="28"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
+        
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="0, 0, 10, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                <Label Content="Wybierz osobę z kartoteki:"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" Name="KartotekaBox" DisplayMemberPath="RegisterId"/>
+                        <Button Grid.Column="1" Name="AddSprawca" Content="Dodaj" Background="CadetBlue" Click="AddSprawca_Click"/>
+                        <Button Grid.Column="2" x:Name="DeleteSprawca" Content="Usuń" Background="Red" Click="Delete_Sprawca_Click"/>
+                    </Grid>
+                </StackPanel>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Sprawcy:"/></TextBlock>
+                    <ListView Grid.Row="1" Name="ListViewColumnsSprawcy" MaxWidth="350">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="IdHeader" Header="ID"  Width="30" DisplayMemberBinding="{Binding RegisterId}" />
+                                <GridViewColumn x:Name="ImieHeader" Header="FirstName" Width="100" DisplayMemberBinding="{Binding FirstName}"/>
+                                <GridViewColumn x:Name="SurnameHeader" Header="Surname"  Width="130" DisplayMemberBinding="{Binding Surname}"/>
+                                <GridViewColumn x:Name="WiekHeader" Header="Age"  Width="90" DisplayMemberBinding="{Binding Age}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+            
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Label Content="Wybierz policjanta:"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" Name="PolicjantBox" DisplayMemberPath="PolicemanId"/>
+                        <Button Grid.Column="1" x:Name="Add_Policjant" Content="Dodaj" Background="CadetBlue" Click="Add_Policjant_Click"/>
+                        <Button Grid.Column="2" x:Name="Delete_Policjant" Content="Usuń" Background="Red" Click="Delete_Policjant_Click"/>
+                    </Grid>
+                </StackPanel>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Policjanci na miejscu:"/></TextBlock>
+                    <ListView Grid.Row="1" x:Name="ListViewColumnsPolicjanci" MaxWidth="450">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="IdHeader1" Header="ID"  Width="30" DisplayMemberBinding="{Binding PolicemanId}" />
+                                <GridViewColumn x:Name="ImieHeader1" Header="FirstName" Width="100" DisplayMemberBinding="{Binding  FirstName}"/>
+                                <GridViewColumn x:Name="SurnameHeader1" Header="Surname"  Width="120" DisplayMemberBinding="{Binding  Surname}"/>
+                                <GridViewColumn x:Name="RangaHeader1" Header="Ranga"  Width="100" DisplayMemberBinding="{Binding Ranga.Name}"/>
+                                <GridViewColumn x:Name="KomendaHeader1" Header="KomendaID"  Width="100" DisplayMemberBinding="{Binding PoliceStationId}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Style.Resources>
+                    <Setter Property="FontSize" Value="17"/>
+                    <Setter Property="MinWidth" Value="60"/>
+                    <Setter Property="Margin" Value="10, 0, 0, 0"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="FontStyle" Value="Oblique"/>
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </Grid.Resources>
         </Grid>
     </Grid>
 </Window>

@@ -6,14 +6,19 @@
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
         Title="PlanOfSuborned" Height="516" Width="946">
-    <Grid >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="Blue" Offset="0.0" />
                 <GradientStop Color="Cyan" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
+        <!--<Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
         <Rectangle HorizontalAlignment="Left" Height="400" Margin="24,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="904">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -21,24 +26,28 @@
                     <GradientStop Color="Cyan" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
-        </Rectangle>
-        <Label Content="Plan Służby Policjanta:" FontFamily="Cooper Black"
-  FontSize="36" HorizontalAlignment="Left" Margin="76,39,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Name" HorizontalAlignment="Left" Margin="511,44,0,0" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="28" Width="377" Height="42" ></Label>
-        <ListView Name="ListViewColumns" Margin="58,102,58,102">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
-                    <GridViewColumn x:Name="DataRHeader" Header="Date Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding  Start_Date}"/>
-                    <GridViewColumn x:Name="DataZHeader" Header="Date Zakończenia"  Width="150" DisplayMemberBinding="{Binding  Data_zakonczenia}"/>
-                    <GridViewColumn x:Name="GodzinaRHeader" Header="Hour Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding  Start_Hour}"/>
-                    <GridViewColumn x:Name="GodzinaZHeader" Header="Hour Zakończenia"  Width="150" DisplayMemberBinding="{Binding  End_hour}"/>
+        </Rectangle>-->
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Label Content="Plan Służby Policjanta:" FontFamily="Cooper Black" FontSize="36" HorizontalAlignment="Left"/>
+                <Label x:Name="Name" HorizontalAlignment="Right" FontStyle="Oblique" Margin="20, 0" FontSize="28" ></Label>
+            </StackPanel>
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <ListView Name="ListViewColumns" Margin="20" MaxWidth="720">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
+                        <GridViewColumn x:Name="DataRHeader" Header="Date Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding  Start_Date}"/>
+                        <GridViewColumn x:Name="DataZHeader" Header="Date Zakończenia"  Width="150" DisplayMemberBinding="{Binding  Data_zakonczenia}"/>
+                        <GridViewColumn x:Name="GodzinaRHeader" Header="Hour Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding  Start_Hour}"/>
+                        <GridViewColumn x:Name="GodzinaZHeader" Header="Hour Zakończenia"  Width="150" DisplayMemberBinding="{Binding  End_hour}"/>
 
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="Abort" Content="Zatrzymaj" Visibility="Hidden"  HorizontalAlignment="Left" Margin="775,280,0,0" VerticalAlignment="Top" Height="31" Width="61"/>
-
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Button Grid.Row="2" x:Name="Abort" Content="Zatrzymaj" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20, 5" Visibility="Hidden"/>
     </Grid>
 </Window>
