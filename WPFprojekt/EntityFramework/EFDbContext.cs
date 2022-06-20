@@ -33,7 +33,10 @@ namespace EntityFramework
             public EFDbContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<EFDbContext>();
-                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"F:\\student debil sem 6\\WPF projekt\\WPFprojekt\\EntityFramework\\PoliceDB.mdf\";Integrated Security=True");
+                optionsBuilder.UseSqlServer(
+                    "Server = (localdb)\\mssqllocaldb; Database = police database; Trusted_Connection = True; MultipleActiveResultSets = true");
+                // optionsBuilder.UseSqlServer(
+                //     "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\STUDIA\\Semestr 6\\Programowanie aplikacji w WPF\\Projekt\\WPF - projekt\\WPFprojekt\\EntityFramework\\DB\\Database1.mdf\";Integrated Security=True");
                 return new EFDbContext(optionsBuilder.Options);
             }
         }
