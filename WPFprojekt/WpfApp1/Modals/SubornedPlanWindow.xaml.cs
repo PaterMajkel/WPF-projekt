@@ -46,7 +46,7 @@ namespace PoliceApp.Modals
             if (Data_roz.Text.Length == 0 || Godzina_zak.Text.Length == 0 || Data_zak.Text.Length == 0 ||
                 Godzina_roz.Text.Length == 0 || RadiowozBox.SelectedItem == null)
             {
-                MessageBox.Show("Wprowadzono nie mogą być puste", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wprowadzone dane nie mogą być puste", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
