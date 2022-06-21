@@ -64,7 +64,7 @@ namespace PoliceApp
                     IdOrder = !IdOrder;
                     break;
                 }
-                case "Imię":
+                case "Name":
                 {
                     if (!IdOrder)
                     {

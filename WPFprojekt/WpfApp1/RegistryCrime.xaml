@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PoliceApp"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
         mc:Ignorable="d"
-       Title="Registry event " Height="516" Width="946">
+       Title="Registry event ">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
