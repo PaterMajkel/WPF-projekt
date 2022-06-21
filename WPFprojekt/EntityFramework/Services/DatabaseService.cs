@@ -181,6 +181,15 @@ namespace EntityFramework.Services
             _context.Add(register);
             _context.SaveChanges();
         }
+        public void EditRegistry(Register register)
+        {
+            var edited = _context.Registers.Where(r => r.RegisterId == register.RegisterId).FirstOrDefault();
+            if (edited == null)
+                return;
+            _context.Registers.Remove(edited);
+            _context.Registers.Add(register);
+            _context.SaveChanges();
+        }
         public void AddPoliceCar(PoliceCar policeCar)
         {
             _context.Add(policeCar);
