@@ -94,15 +94,15 @@ namespace PoliceApp
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Ranga":
+                case "Rank":
                     {
                         if (!IdOrder)
                         {
-                            data = data.OrderByDescending(id => id.Policeman.Ranga.Name).ToList();
+                            data = data.OrderByDescending(id => id.Policeman.Rank.Name).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        data = data.OrderBy(id => id.Policeman.Ranga.Name).ToList();
+                        data = data.OrderBy(id => id.Policeman.Rank.Name).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
@@ -128,7 +128,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<User>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeleteUsers(selected);
@@ -136,7 +136,7 @@ namespace PoliceApp
             foreach (var element in selected)
             {
                 if(element.Role.ToUpper()=="ADMIN")
-                    MessageBox.Show("CZY TY SERIO PRÓBOWAŁEŚ USUNĄĆ ADMINA?!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("CZY TY SERIO PRÓBOWAŁEŚ USUNĄĆ ADMINA?!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 data.Remove(element);
             }
@@ -149,20 +149,20 @@ namespace PoliceApp
             selectedToEdit = (User)ListViewColumns.SelectedItem;
             if (selectedToEdit == null)
             {
-                MessageBox.Show("Błąd przy edytowaniu!", "Edytuj", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error przy edytowaniu!", "Edit", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             editMode = true;
-            AddEdit.Content = "Zmień";
+            AddEdit.Content = "Change";
             EditButton.IsEnabled = false;
             Abort.Visibility = Visibility.Visible;
             Name.Text = selectedToEdit.Policeman.FirstName;
             Sunrame.Text = selectedToEdit.Policeman.Surname;
             Login.Text = selectedToEdit.Login;
             Password.Text = selectedToEdit.Password;
-            CurrentMode.Content = $"Edytuj pozycję";
-            RangaBox.SelectedItem = selectedToEdit.Policeman.Ranga;
+            CurrentMode.Content = $"Edit pozycję";
+            RangaBox.SelectedItem = selectedToEdit.Policeman.Rank;
             KomendaBox.SelectedItem = selectedToEdit.Policeman.PoliceStation;
         }
         private void RefreshData()
@@ -188,7 +188,7 @@ namespace PoliceApp
         public void AbortChange()
         {
             editMode = false;
-            AddEdit.Content = "Dodaj";
+            AddEdit.Content = "Add";
             Abort.Visibility = Visibility.Hidden;
             CurrentMode.Content = $"Nowa pozycja";
             EditButton.IsEnabled = true;
@@ -211,20 +211,20 @@ namespace PoliceApp
                 Policeman policjant = new();
                 if (!isAdmin && (((PoliceStation)KomendaBox.SelectedItem) == null || ((Rank)RangaBox.SelectedItem) == null))
                 {
-                    MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Inserted wrong data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (!isAdmin && (Login.Text.Length == 0 || Password.Text.Length==0 || Name.Text.Length==0 || Sunrame.Text.Length == 0))
                 {
-                    MessageBox.Show("Wartości nie mogą być puste", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Wartości nie mogą być puste", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (isAdmin && (Login.Text.Length == 0 || Password.Text.Length == 0))
                 {
-                    MessageBox.Show("Wartości nie mogą być puste", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Wartości nie mogą być puste", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
  
-                policjant = new Policeman { FirstName = Name.Text, Surname = Sunrame.Text, PoliceStationId = ((PoliceStation)KomendaBox.SelectedItem).PoliceStationId, RangaId = ((Rank)RangaBox.SelectedItem).RangaId};
+                policjant = new Policeman { FirstName = Name.Text, Surname = Sunrame.Text, PoliceStationId = ((PoliceStation)KomendaBox.SelectedItem).PoliceStationId, RankId = ((Rank)RangaBox.SelectedItem).RankId};
 
                 databaseService.AddUser(new User { Login = Login.Text, Password = Password.Text, Role = isAdmin ? "Admin" : "" }, policjant);
                 RefreshData();
@@ -232,7 +232,7 @@ namespace PoliceApp
             }
             if(isAdmin!=true)
             {
-                selectedToEdit.Policeman.RangaId = ((Rank)RangaBox.SelectedItem).RangaId;
+                selectedToEdit.Policeman.RankId = ((Rank)RangaBox.SelectedItem).RankId;
                 selectedToEdit.Policeman.PoliceStationId = ((PoliceStation)KomendaBox.SelectedItem).PoliceStationId;
                 selectedToEdit.Policeman.FirstName = Name.Text;
                 selectedToEdit.Policeman.Surname = Sunrame.Text;
@@ -253,7 +253,7 @@ namespace PoliceApp
                .Where(p => p.UserId.ToString().Contains(FilterId.Text))
                .Where(p => p.Policeman.FirstName.ToUpper().Contains(FilterImie.Text.ToUpper()))
                .Where(p => p.Policeman.Surname.ToUpper().Contains(FilterSurname.Text.ToUpper()))
-               .Where(p => p.Policeman.Ranga.Name.ToUpper().Contains(FilterRanga.Text.ToUpper()))
+               .Where(p => p.Policeman.Rank.Name.ToUpper().Contains(FilterRanga.Text.ToUpper()))
                .Where(p => p.Policeman.PoliceStation.PoliceStationId.ToString().Contains(FilterIdKomendy.Text.ToUpper()))
                .Where(p => p.Policeman.PoliceStation.Address.ToUpper().Contains(FilterAdres.Text.ToUpper()))
                .ToList();

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EntityFramework.Models;
+using EntityFramework.Services;
 
 namespace PoliceApp.Modals
 {
@@ -19,19 +21,45 @@ namespace PoliceApp.Modals
     /// </summary>
     public partial class SubornedPlanWindow : Window
     {
-        public SubornedPlanWindow()
+        private List<Policeman> policemen;
+        private ICollection<PoliceCar> radiowozy;
+
+        private DatabaseService databaseService = new();
+        public Patrol patrol;
+
+
+        public SubornedPlanWindow(List<Policeman> policemen)
         {
+            this.policemen = policemen;
+            this.radiowozy = databaseService.GetPoliceCars();
             InitializeComponent();
+            RadiowozBox.ItemsSource = radiowozy;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Close();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (Data_roz.Text.Length == 0 || Godzina_zak.Text.Length == 0 || Data_zak.Text.Length == 0 ||
+                Godzina_roz.Text.Length == 0 || RadiowozBox.SelectedItem == null)
+            {
+                MessageBox.Show("Wprowadzono nie mogą być puste", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            patrol = new Patrol
+            {
+                Start_Date = Data_roz.Text,
+                Data_zakonczenia = Data_zak.Text,
+                Start_Hour = Godzina_roz.Text,
+                End_hour = Data_zak.Text,
+                PoliceCarId = ((PoliceCar) RadiowozBox.SelectedItem).PoliceCarId,
+                Policemans = policemen
+            };
+            Close();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace PoliceApp
         string login;
         List<Button> buttons;
         SharedData uzytkownik;
-        public DatabaseService databaseService = new DatabaseService();
+        public DatabaseService databaseService = new();
         public LoginPanel(ref Button userButt, ref Button adminButt)
         {
             buttons = new List<Button>();
@@ -57,9 +57,13 @@ namespace PoliceApp
             }
             foreach (var button in buttons)
                 button.IsEnabled = false;
-            MessageBox.Show("Złe dane logowania","Błąd!", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Wrong login data","Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

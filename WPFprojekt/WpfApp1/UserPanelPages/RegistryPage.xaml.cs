@@ -17,13 +17,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using PoliceApp.Modals;
 
 namespace PoliceApp
 {
     /// <summary>
     /// Logika interakcji dla klasy Kartoteka.xaml
     /// </summary>
-    public partial class RegistryPage : Page 
+    public partial class RegistryPage : Page
     {
         public DatabaseService databaseService = new();
         public ICollection<Register> data;
@@ -41,123 +42,113 @@ namespace PoliceApp
             data = databaseService.GetRegisters();
             AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(ListView_OnColumnClick));
             ListViewColumns.ItemsSource = data;
-
         }
+
         private void ListView_OnColumnClick(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource.GetType().Name != "GridViewColumnHeader")
                 return;
-            string headerName=(e.OriginalSource as GridViewColumnHeader).Content.ToString();
-            switch(headerName)
+            string headerName = (e.OriginalSource as GridViewColumnHeader).Content.ToString();
+            switch (headerName)
             {
                 case "ID":
+                {
+                    if (!IdOrder)
                     {
-                        if(!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.RegisterId).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.RegisterId).ToList();
+                        data = data.OrderByDescending(id => id.RegisterId).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Imię":
+
+                    data = data.OrderBy(id => id.RegisterId).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
+                case "Name":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.FirstName).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.FirstName).ToList();
+                        data = data.OrderByDescending(id => id.FirstName).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.FirstName).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
                 case "Surname":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.Surname).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.Surname).ToList();
+                        data = data.OrderByDescending(id => id.Surname).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.Surname).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
                 case "Age":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.Age).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.Age).ToList();
+                        data = data.OrderByDescending(id => id.Age).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.Age).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
             }
+
             ListViewColumns.ItemsSource = data;
         }
 
         private void ListViewColumns_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-        private void Button_Click_Dodaj(object sender, RoutedEventArgs e)
-        {
-            if (imie == null || nazwisko == null || wiek == 0 || pickedImage == null)
+            if (ListViewColumns.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                Edit.IsEnabled = false;
+                Delete.IsEnabled = false;
             }
-            else if(wiek<=17 || wiek>=100)
+            else
             {
-                MessageBox.Show("Age nie może być mniejszy niż 17 i większy od 100 ", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                Edit.IsEnabled = false;
+                Delete.IsEnabled = true;
+                if (ListViewColumns.SelectedItems.Count == 1)
+                    Edit.IsEnabled = true;
             }
-
-            databaseService.AddRegistry(new Register {FirstName=imie,Surname=nazwisko,Age=wiek,Picture=pickedImage});
-            RefreshData();
-            pickedImage = null;
         }
+
         private void RefreshData()
         {
             data = databaseService.GetRegisters();
             ListViewColumns.ItemsSource = data;
         }
-        private void Imie_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            imie = FirstName.Text.ToString();
-        }
-        private void Surname_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            nazwisko = Surname.Text.ToString();
-        }
-        private void Wiek_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string pom=Age.Text.ToString();
-            wiek = int.Parse(pom);
-        }
+
         private void Button_Click_Usun(object sender, RoutedEventArgs e)
         {
             var selected = ListViewColumns.SelectedItems.Cast<Register>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
             databaseService.DeleteRegistries(selected);
             foreach (var element in selected)
                 data.Remove(element);
             ListViewColumns.ItemsSource = null;
             ListViewColumns.ItemsSource = data;
         }
+
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var item = ((FrameworkElement)e.OriginalSource).DataContext as Register;
+            var item = ((FrameworkElement) e.OriginalSource).DataContext as Register;
             if (item != null)
             {
                 Window kartotekaOsoba = new RegistryPerson(item);
@@ -165,20 +156,41 @@ namespace PoliceApp
             }
         }
 
-        private void Button_Click_AddImage(object sender, RoutedEventArgs e)
+        private void Button_Click_Dodaj(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog  = new OpenFileDialog();
-            fileDialog.Multiselect = false;
-            fileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) |*.jpg; *.jpeg; *.png";
-            //fileDialog.DefaultExt = ".png | *.jpg";
-            bool? result = fileDialog.ShowDialog();
-            if (result == true)
+            var form = new RegisterWindow()
             {
-                pickedImage = File.ReadAllBytes(fileDialog.FileName);
-                    return;
+                Owner = Window.GetWindow(this)
+            };
+            form.ShowDialog();
+            var register = form.register;
+            if (register != null)
+            {
+                databaseService.AddRegistry(register);
+                RefreshData();
             }
-            MessageBox.Show("Nie udało się pobrać pliku", "bruh", MessageBoxButton.OK,MessageBoxImage.Error);
 
+            return;
+        }
+
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
+            var register = ListViewColumns.SelectedItems[0] as Register;
+            var form = new RegisterWindow(register)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            if (form.ShowDialog().GetValueOrDefault(false))
+            {
+                var newRegister = form.register;
+                if (register != null)
+                {
+                    databaseService.EditRegistry(newRegister);
+                    RefreshData();
+                }
+            }
+
+            return;
         }
     }
 }

@@ -139,7 +139,7 @@ namespace PoliceApp
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "KomendaID.":
+                case "PoliceStation ID.":
                     {
                         if (!IdOrder)
                         {
@@ -151,15 +151,15 @@ namespace PoliceApp
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Ranga.":
+                case "Rank.":
                     {
                         if (!IdOrder)
                         {
-                            wykroczenia.Policemans = wykroczenia.Policemans.OrderByDescending(id => id.RangaId).ToList();
+                            wykroczenia.Policemans = wykroczenia.Policemans.OrderByDescending(id => id.RankId).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        wykroczenia.Policemans = wykroczenia.Policemans.OrderBy(id => id.RangaId).ToList();
+                        wykroczenia.Policemans = wykroczenia.Policemans.OrderBy(id => id.RankId).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
@@ -216,7 +216,7 @@ namespace PoliceApp
             var pickedPolicjants = ListViewColumnsPolicjanci.SelectedItems.Cast<Policeman>().ToList();
             if (pickedPolicjants == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeletePolicemenFromFelony(wykroczenia, pickedPolicjants);
@@ -229,7 +229,7 @@ namespace PoliceApp
             var pickedSprawcy = ListViewColumnsSprawcy.SelectedItems.Cast<Register>().ToList();
             if (pickedSprawcy == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeleteFelonFromFelony(wykroczenia, pickedSprawcy);

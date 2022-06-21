@@ -5,61 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoliceApp.Modals"
         mc:Ignorable="d"
-        Title="PolicemanWindow" SizeToContent="Height" Width="400" WindowStartupLocation="CenterOwner">
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" FontFamily="Cooper Black" HorizontalContentAlignment="Center" Content="Add policeman"
+        Title="PolicemanWindow" SizeToContent="Height" Width="400" WindowStartupLocation="CenterOwner" WindowState="Normal"  Background="Transparent" WindowStyle="None" AllowsTransparency="True">
+    <Border CornerRadius="20" BorderThickness="7">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                <GradientStop Color="DeepSkyBlue" Offset="1" />
+                <GradientStop Color="DarkBlue" Offset="0" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="DeepSkyBlue" Offset="1" />
+                    <GradientStop Color="DarkBlue" Offset="0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label Grid.Row="0" FontFamily="Cooper Black" HorizontalContentAlignment="Center" Content="Add policeman"
                FontSize="25" />
-        <StackPanel Grid.Row="1" Margin="10">
-            <TextBlock FontSize="20" TextWrapping="Wrap">
+            <StackPanel Grid.Row="1" Margin="10">
+                <TextBlock FontSize="20" TextWrapping="Wrap">
                 <Run Language="pl-pl" Text="Name" />
-            </TextBlock>
-            <TextBox x:Name="Name" TextWrapping="Wrap" FontSize="18" />
-        </StackPanel>
-        <StackPanel Grid.Row="2" Margin="10">
-            <TextBlock TextWrapping="Wrap" FontSize="20">
+                </TextBlock>
+                <TextBox x:Name="Name" TextWrapping="Wrap" FontSize="18" />
+            </StackPanel>
+            <StackPanel Grid.Row="2" Margin="10">
+                <TextBlock TextWrapping="Wrap" FontSize="20">
                 <Run Language="pl-pl" Text="Surname" />
-            </TextBlock>
-            <TextBox x:Name="Surname" TextWrapping="Wrap" FontSize="18" />
-        </StackPanel>
-        <StackPanel Grid.Row="3" Margin="10">
-            <TextBlock FontSize="20">
+                </TextBlock>
+                <TextBox x:Name="Surname" TextWrapping="Wrap" FontSize="18" />
+            </StackPanel>
+            <StackPanel Grid.Row="3" Margin="10">
+                <TextBlock FontSize="20">
                 <Run Language="pl-pl" Text="Login" />
-            </TextBlock>
-            <TextBox x:Name="Login" TextWrapping="Wrap" FontSize="18" />
-        </StackPanel>
-        <StackPanel Grid.Row="4" Margin="10">
-            <TextBlock FontSize="20">
+                </TextBlock>
+                <TextBox x:Name="Login" TextWrapping="Wrap" FontSize="18" />
+            </StackPanel>
+            <StackPanel Grid.Row="4" Margin="10">
+                <TextBlock FontSize="20">
                 <Run Language="pl-pl" Text="Password" />
-            </TextBlock>
-            <TextBox x:Name="Password" TextWrapping="Wrap" FontSize="18" />
-        </StackPanel>
-        <StackPanel Grid.Row="5" Margin="10">
-            <TextBlock FontSize="20">
+                </TextBlock>
+                <TextBox x:Name="Password" TextWrapping="Wrap" FontSize="18" />
+            </StackPanel>
+            <StackPanel Grid.Row="5" Margin="10">
+                <TextBlock FontSize="20">
                 <Run Language="pl-pl" Text="Rank" />
-            </TextBlock>
-            <ComboBox Name="Rank" DisplayMemberPath="Name" />
-        </StackPanel>
-        <StackPanel Grid.Row="6" Margin="10">
-            <TextBlock FontSize="20">
+                </TextBlock>
+                <ComboBox Name="Rank" DisplayMemberPath="Name" />
+            </StackPanel>
+            <StackPanel Grid.Row="6" Margin="10">
+                <TextBlock FontSize="20">
                 <Run Language="pl-pl" Text="Station" />
-            </TextBlock>
-            <ComboBox Name="Station" DisplayMemberPath="Name" />
-        </StackPanel>
-        <CheckBox  Margin="10" Grid.Row="7" x:Name="AdminCheckBox" FontSize="18" Content="Administrator"/>
-        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="OkButton" Margin="5" Padding="10, 5" Content="OK" Click="OkButton_Click" />
-            <Button x:Name="CancelButton" Margin="5" Padding="10, 5" Content="Cancel" Click="CancelButton_Click" />
-        </StackPanel>
-    </Grid>
+                </TextBlock>
+                <ComboBox Name="Station" DisplayMemberPath="Name" />
+            </StackPanel>
+            <CheckBox  Margin="10" Grid.Row="7" x:Name="AdminCheckBox" FontSize="18" Content="Administrator"/>
+            <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="OkButton" Margin="5" Padding="10, 5" Content="OK" Click="OkButton_Click" />
+                <Button x:Name="CancelButton" Margin="5" Padding="10, 5" Content="Cancel" Click="CancelButton_Click" />
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

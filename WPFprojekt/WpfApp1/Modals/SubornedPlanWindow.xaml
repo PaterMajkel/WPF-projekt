@@ -4,8 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="SubornedPlanWindow" SizeToContent="Height" Width="400" WindowStartupLocation="CenterOwner">
-    <Grid Margin="10">
+        Title="SubornedPlanWindow" SizeToContent="Height" Width="400" WindowStartupLocation="CenterOwner" WindowState="Normal"  Background="Transparent" WindowStyle="None" AllowsTransparency="True">
+    <Border CornerRadius="20" BorderThickness="7">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                <GradientStop Color="DeepSkyBlue" Offset="1" />
+                <GradientStop Color="DarkBlue" Offset="0" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -13,10 +20,16 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="DeepSkyBlue" Offset="1" />
+                    <GradientStop Color="DarkBlue" Offset="0" />
+                </LinearGradientBrush>
+            </Grid.Background>
         <Label Grid.Row="0" FontFamily="Cooper Black" HorizontalContentAlignment="Center"  Content="Add patrol" FontSize="25" />
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Label Content="Police car ID" FontSize="15" />
-            <ComboBox x:Name="RadiowozBox" MinWidth="120" DisplayMemberPath="PoliceCarId" />
+            <Label Content="ID radiowozu" FontSize="15" />
+            <ComboBox x:Name="RadiowozBox" MinWidth="120" DisplayMemberPath="PoliceCarId"/>
         </StackPanel>
         <Grid Grid.Row="2" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
@@ -24,11 +37,11 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10">
-                <Label Content="Start date"  FontSize="15"/>
-                <TextBox x:Name="Data_roz"/>
+                <Label Content="Start Date"  FontSize="15"/>
+                <DatePicker x:Name="Data_roz"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="10">
-                <Label Content="Start time"  FontSize="15"/>
+                <Label Content="Start Hour"  FontSize="15"/>
                 <TextBox x:Name="Godzina_roz"/>
             </StackPanel>
         </Grid>
@@ -38,11 +51,11 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10">
-                <Label Content="Finish data"  FontSize="15"/>
-                <TextBox x:Name="Data_zak"/>
+                <Label Content="End Date"  FontSize="15"/>
+                <DatePicker x:Name="Data_zak"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="10">
-                <Label Content="Finish time"  FontSize="15"/>
+                <Label Content="End Hour"  FontSize="15"/>
                 <TextBox x:Name="Godzina_zak"/>
             </StackPanel>
         </Grid>
@@ -51,4 +64,5 @@
             <Button x:Name="CancelButton" Margin="5" Padding="10, 5" Content="Cancel" Click="CancelButton_Click"/>
         </StackPanel>
     </Grid>
+        </Border>
 </Window>

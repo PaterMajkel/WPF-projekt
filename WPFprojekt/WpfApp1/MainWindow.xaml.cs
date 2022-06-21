@@ -41,7 +41,7 @@ namespace WpfApp1
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
             Window loginPanel = new LoginPanel(ref UserPanel, ref AdminPanel);
-            loginPanel.Show();
+            loginPanel.ShowDialog();
 
         }
 

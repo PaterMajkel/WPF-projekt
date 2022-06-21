@@ -24,7 +24,7 @@
         </Rectangle>-->
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal" Margin="20">
-                <Label Content="Plan Służby Policjanta:" FontFamily="Cooper Black" FontSize="36" HorizontalAlignment="Left"/>
+                <Label Content="Duty plan of policeman:" FontFamily="Cooper Black" FontSize="36" HorizontalAlignment="Left"/>
                 <Label x:Name="Name" HorizontalAlignment="Right" FontStyle="Oblique" Margin="20, 0" FontSize="28" ></Label>
             </StackPanel>
             
@@ -33,16 +33,16 @@
             <ListView Name="ListViewColumns" Margin="20" MaxWidth="720">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
-                        <GridViewColumn x:Name="DataRHeader" Header="Date Rozpoczęcia" Width="150" DisplayMemberBinding="{Binding  Start_Date}"/>
-                        <GridViewColumn x:Name="DataZHeader" Header="Date Zakończenia"  Width="150" DisplayMemberBinding="{Binding  Data_zakonczenia}"/>
-                        <GridViewColumn x:Name="GodzinaRHeader" Header="Hour Rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding  Start_Hour}"/>
-                        <GridViewColumn x:Name="GodzinaZHeader" Header="Hour Zakończenia"  Width="150" DisplayMemberBinding="{Binding  End_hour}"/>
+                        <GridViewColumn x:Name="IdHeader" Header="Police car ID"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
+                        <GridViewColumn x:Name="DataRHeader" Header="Start date" Width="150" DisplayMemberBinding="{Binding  Start_Date}"/>
+                        <GridViewColumn x:Name="DataZHeader" Header="End Date"  Width="150" DisplayMemberBinding="{Binding  Data_zakonczenia}"/>
+                        <GridViewColumn x:Name="GodzinaRHeader" Header="Start hour"  Width="150" DisplayMemberBinding="{Binding  Start_Hour}"/>
+                        <GridViewColumn x:Name="GodzinaZHeader" Header="End hour"  Width="150" DisplayMemberBinding="{Binding  End_hour}"/>
 
                     </GridView>
                 </ListView.View>
             </ListView>
         </Grid>
-        <Button Grid.Row="2" x:Name="Abort" Content="Zatrzymaj" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20, 5" Visibility="Hidden"/>
+        <Button Grid.Row="2" x:Name="Abort" Content="Abort" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20, 5" Visibility="Hidden"/>
     </Grid>
 </Window>

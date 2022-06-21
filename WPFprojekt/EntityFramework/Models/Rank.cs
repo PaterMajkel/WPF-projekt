@@ -10,7 +10,7 @@ namespace EntityFramework.Models
     public class Rank
     {
         [Key]
-        public int RangaId { get; set; }
+        public int RankId { get; set; }
         public string Name { get; set; }
         public double Salary { get; set; }
         [Required]

@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PoliceApp.Modals;
+
 namespace PoliceApp
 {
     /// <summary>
@@ -22,12 +24,9 @@ namespace PoliceApp
     /// </summary>
     public partial class RegistryCrime : Page
     {
-        public DatabaseService databaseService=new();
+        public DatabaseService databaseService = new();
         public ICollection<Crime> data;
         public bool IdOrder = false;
-        public string nazwa;
-        public string dzien;
-        public string godzina;
 
         //public DatePicker data;
 
@@ -38,6 +37,7 @@ namespace PoliceApp
             AddHandler(GridViewColumnHeader.ClickEvent, new RoutedEventHandler(ListView_OnColumnClick));
             ListViewColumns.ItemsSource = data;
         }
+
         private void ListView_OnColumnClick(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource.GetType().Name != "GridViewColumnHeader")
@@ -46,110 +46,109 @@ namespace PoliceApp
             switch (headerName)
             {
                 case "ID":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.PrzestepstwoId).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.PrzestepstwoId).ToList();
+                        data = data.OrderByDescending(id => id.PrzestepstwoId).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.PrzestepstwoId).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
                 case "Name":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.Name).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.Name).ToList();
+                        data = data.OrderByDescending(id => id.Name).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.Name).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
                 case "Date":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.Date).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.Date).ToList();
+                        data = data.OrderByDescending(id => id.Date).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.Date).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
                 case "Hour":
+                {
+                    if (!IdOrder)
                     {
-                        if (!IdOrder)
-                        {
-                            data = data.OrderByDescending(id => id.Hour).ToList();
-                            IdOrder = !IdOrder;
-                            break;
-                        }
-                        data = data.OrderBy(id => id.Hour).ToList();
+                        data = data.OrderByDescending(id => id.Hour).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
+
+                    data = data.OrderBy(id => id.Hour).ToList();
+                    IdOrder = !IdOrder;
+                    break;
+                }
             }
+
             ListViewColumns.ItemsSource = data;
         }
+
         private void Button_Click_Dodaj(object sender, RoutedEventArgs e)
         {
-            if (nazwa == null || dzien == null ||  godzina== null)
+            FelonyCrimeWindow form = new()
             {
-                MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                Owner = Window.GetWindow(this)
+            };
+            form.ShowDialog();
+            var newCrime = form.crime;
+            if (newCrime != null)
+            {
+                databaseService.AddCrime(newCrime);
+                Refresh();
             }
-            databaseService.AddCrime(new Crime { Name = nazwa, Date = dzien, Hour = godzina, });
-            Refresh();
+
+            return;
         }
+
         private void Refresh()
         {
             data = databaseService.GetCrimes();
             ListViewColumns.ItemsSource = data;
         }
-        private void Nazwa_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            nazwa = Name.Text.ToString();
-        }
-        private void Data_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            dzien = Date.Text.ToString();
-        }
-        private void Godzina_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            godzina = Hour.Text.ToString();
-        }
-        private void Button_Click_Usun(object sender, RoutedEventArgs e)
+
+        private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
             var selected = ListViewColumns.SelectedItems.Cast<Crime>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
             databaseService.DeleteCrimes(selected);
             foreach (var element in selected)
                 data.Remove(element);
             ListViewColumns.ItemsSource = null;
             ListViewColumns.ItemsSource = data;
         }
+
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-           var item = ((FrameworkElement)e.OriginalSource).DataContext as Crime;
-           if (item != null)
-           {
-               Window  przestepstwo= new CrimeSingle(item);
+            var item = ((FrameworkElement) e.OriginalSource).DataContext as Crime;
+            if (item != null)
+            {
+                Window przestepstwo = new CrimeSingle(item);
                 przestepstwo.Show();
-           }
+            }
         }
-
-
     }
 }
-
-
-

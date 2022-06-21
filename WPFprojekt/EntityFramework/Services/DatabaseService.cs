@@ -58,7 +58,7 @@ namespace EntityFramework.Services
         }
         public ICollection<Policeman>GetPolicemenAndRank()
         {
-            return _context.Policemans.Where(p => p.IsActive).Include(k => k.Ranga).ToList();
+            return _context.Policemans.Where(p => p.IsActive).Include(k => k.Rank).ToList();
         }
         public ICollection<Register> GetRegistryCoughtByPolicemanId(int id)
         {
@@ -179,6 +179,15 @@ namespace EntityFramework.Services
         public void AddRegistry(Register register)
         {
             _context.Add(register);
+            _context.SaveChanges();
+        }
+        public void EditRegistry(Register register)
+        {
+            var edited = _context.Registers.Where(r => r.RegisterId == register.RegisterId).FirstOrDefault();
+            if (edited == null)
+                return;
+            _context.Registers.Remove(edited);
+            _context.Registers.Add(register);
             _context.SaveChanges();
         }
         public void AddPoliceCar(PoliceCar policeCar)
@@ -367,7 +376,7 @@ namespace EntityFramework.Services
         }
         public ICollection<Policeman> GetSubordinates(Policeman policjant)
         {
-            return _context.Policemans.Where(p=>p.IsActive).Where(p=>p.PoliceStationId==policjant.PoliceStationId && p.RangaId< policjant.RangaId).Include(p=>p.Ranga).Include(p => p.PoliceStation).ToList();
+            return _context.Policemans.Where(p=>p.IsActive).Where(p=>p.PoliceStationId==policjant.PoliceStationId && p.RankId< policjant.RankId).Include(p=>p.Rank).Include(p => p.PoliceStation).ToList();
         }
         public void AddPatrol(Patrol patrol)
         {

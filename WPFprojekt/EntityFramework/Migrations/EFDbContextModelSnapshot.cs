@@ -388,7 +388,7 @@ namespace EntityFramework.Migrations
                     b.Property<int>("PoliceStationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RangaId")
+                    b.Property<int>("RankId")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
@@ -398,7 +398,7 @@ namespace EntityFramework.Migrations
 
                     b.HasIndex("PoliceStationId");
 
-                    b.HasIndex("RangaId");
+                    b.HasIndex("RankId");
 
                     b.ToTable("Policemans");
 
@@ -409,7 +409,7 @@ namespace EntityFramework.Migrations
                             FirstName = "Admin",
                             IsActive = false,
                             PoliceStationId = 1,
-                            RangaId = 18,
+                            RankId = 18,
                             Surname = "Admin"
                         },
                         new
@@ -418,7 +418,7 @@ namespace EntityFramework.Migrations
                             FirstName = "Krzysztof",
                             IsActive = true,
                             PoliceStationId = 2,
-                            RangaId = 2,
+                            RankId = 2,
                             Surname = "Gonciarz"
                         },
                         new
@@ -427,7 +427,7 @@ namespace EntityFramework.Migrations
                             FirstName = "Tomasz",
                             IsActive = true,
                             PoliceStationId = 3,
-                            RangaId = 3,
+                            RankId = 3,
                             Surname = "Działowy"
                         },
                         new
@@ -436,7 +436,7 @@ namespace EntityFramework.Migrations
                             FirstName = "Antoni",
                             IsActive = true,
                             PoliceStationId = 4,
-                            RangaId = 4,
+                            RankId = 4,
                             Surname = "Macierewicz"
                         },
                         new
@@ -445,7 +445,7 @@ namespace EntityFramework.Migrations
                             FirstName = "Darth",
                             IsActive = true,
                             PoliceStationId = 2,
-                            RangaId = 5,
+                            RankId = 5,
                             Surname = "Vader"
                         },
                         new
@@ -454,14 +454,14 @@ namespace EntityFramework.Migrations
                             FirstName = "Adam",
                             IsActive = true,
                             PoliceStationId = 2,
-                            RangaId = 1,
+                            RankId = 1,
                             Surname = "Pogorzelski"
                         });
                 });
 
             modelBuilder.Entity("EntityFramework.Models.Rank", b =>
                 {
-                    b.Property<int>("RangaId")
+                    b.Property<int>("RankId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -475,133 +475,133 @@ namespace EntityFramework.Migrations
                     b.Property<double>("Salary")
                         .HasColumnType("float");
 
-                    b.HasKey("RangaId");
+                    b.HasKey("RankId");
 
                     b.ToTable("Ranks");
 
                     b.HasData(
                         new
                         {
-                            RangaId = 1,
+                            RankId = 1,
                             IsActive = true,
                             Name = "Posterunkowy",
                             Salary = 2800.0
                         },
                         new
                         {
-                            RangaId = 2,
+                            RankId = 2,
                             IsActive = true,
                             Name = "Starszy Posterunkowy",
                             Salary = 2900.0
                         },
                         new
                         {
-                            RangaId = 3,
+                            RankId = 3,
                             IsActive = true,
                             Name = "Sierżant",
                             Salary = 3000.0
                         },
                         new
                         {
-                            RangaId = 4,
+                            RankId = 4,
                             IsActive = true,
                             Name = "Starszy Sierżant",
                             Salary = 3100.0
                         },
                         new
                         {
-                            RangaId = 5,
+                            RankId = 5,
                             IsActive = true,
                             Name = "Sierżant Sztabowy",
                             Salary = 3200.0
                         },
                         new
                         {
-                            RangaId = 6,
+                            RankId = 6,
                             IsActive = true,
                             Name = "Młodszy Aspirant",
                             Salary = 3300.0
                         },
                         new
                         {
-                            RangaId = 7,
+                            RankId = 7,
                             IsActive = true,
                             Name = "Aspirant",
                             Salary = 3400.0
                         },
                         new
                         {
-                            RangaId = 8,
+                            RankId = 8,
                             IsActive = true,
                             Name = "Starszy Aspirant",
                             Salary = 3500.0
                         },
                         new
                         {
-                            RangaId = 9,
+                            RankId = 9,
                             IsActive = true,
                             Name = "Aspirant Sztabowy",
                             Salary = 3600.0
                         },
                         new
                         {
-                            RangaId = 10,
+                            RankId = 10,
                             IsActive = true,
                             Name = "Podkomisarz",
                             Salary = 3700.0
                         },
                         new
                         {
-                            RangaId = 11,
+                            RankId = 11,
                             IsActive = true,
                             Name = "Komisarz",
                             Salary = 3800.0
                         },
                         new
                         {
-                            RangaId = 12,
+                            RankId = 12,
                             IsActive = true,
                             Name = "Nadkomisarz",
                             Salary = 3900.0
                         },
                         new
                         {
-                            RangaId = 13,
+                            RankId = 13,
                             IsActive = true,
                             Name = "Podinspektor",
                             Salary = 4000.0
                         },
                         new
                         {
-                            RangaId = 14,
+                            RankId = 14,
                             IsActive = true,
                             Name = "Młodszy Inspektor",
                             Salary = 4100.0
                         },
                         new
                         {
-                            RangaId = 15,
+                            RankId = 15,
                             IsActive = true,
                             Name = "Inspektor",
                             Salary = 4200.0
                         },
                         new
                         {
-                            RangaId = 16,
+                            RankId = 16,
                             IsActive = true,
                             Name = "Nadinspektor",
                             Salary = 4300.0
                         },
                         new
                         {
-                            RangaId = 17,
+                            RankId = 17,
                             IsActive = true,
                             Name = "Generalny Inspektor",
                             Salary = 4400.0
                         },
                         new
                         {
-                            RangaId = 18,
+                            RankId = 18,
                             IsActive = false,
                             Name = "Admin",
                             Salary = 0.0
@@ -972,15 +972,15 @@ namespace EntityFramework.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityFramework.Models.Rank", "Ranga")
+                    b.HasOne("EntityFramework.Models.Rank", "Rank")
                         .WithMany()
-                        .HasForeignKey("RangaId")
+                        .HasForeignKey("RankId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("PoliceStation");
 
-                    b.Navigation("Ranga");
+                    b.Navigation("Rank");
                 });
 
             modelBuilder.Entity("EntityFramework.Models.Region_City", b =>

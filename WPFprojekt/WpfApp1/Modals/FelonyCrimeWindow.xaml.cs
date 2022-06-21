@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EntityFramework.Models;
 
 namespace PoliceApp.Modals
 {
@@ -19,34 +20,42 @@ namespace PoliceApp.Modals
     /// </summary>
     public partial class FelonyCrimeWindow : Window
     {
+        public Felony felony;
+        public Crime crime;
         public FelonyCrimeWindow()
         {
             InitializeComponent();
         }
 
-        private void Nazwa_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+          
+            if (Name.Text.Length == 0 || Hour.Text.Length == 0 || Date.Text.Length == 0)
+            {
+                MessageBox.Show("Values must not be empty", "Error", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return;
+            }
+
+            felony = new Felony()
+            {
+                Name = Name.Text,
+                Date = Date.Text,
+                Hour = Hour.Text
+            };
+            crime = new Crime()
+            {
+                Name = Name.Text,
+                Date = Date.Text,
+                Hour = Hour.Text
+            };
+            Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void Data_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Godzina_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            throw new NotImplementedException();
+            Close();
         }
     }
 }

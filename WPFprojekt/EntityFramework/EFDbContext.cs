@@ -33,7 +33,10 @@ namespace EntityFramework
             public EFDbContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<EFDbContext>();
-                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"F:\\student debil sem 6\\WPF projekt\\WPFprojekt\\EntityFramework\\PoliceDB.mdf\";Integrated Security=True");
+                optionsBuilder.UseSqlServer(
+                    "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"F:\\student debil sem 6\\WPF projekt\\WPFprojekt\\EntityFramework\\PoliceDB.mdf\";Integrated Security=True");
+                // optionsBuilder.UseSqlServer(
+                //     "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\STUDIA\\Semestr 6\\Programowanie aplikacji w WPF\\Projekt\\WPF - projekt\\WPFprojekt\\EntityFramework\\DB\\Database1.mdf\";Integrated Security=True");
                 return new EFDbContext(optionsBuilder.Options);
             }
         }
@@ -113,32 +116,32 @@ namespace EntityFramework
                 new Register { RegisterId = 8, FirstName = "Sara", Surname = "Sudoł", Age = 23, Picture = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "Images\\stock8.jpg")) }
                 );
             modelBuilder.Entity<Policeman>().HasData(
-                new Policeman { PolicemanId = 1, FirstName = "Admin", Surname = "Admin", RangaId = 18, PoliceStationId = 1, IsActive = false },
-                new Policeman { PolicemanId = 2, FirstName = "Krzysztof", Surname = "Gonciarz", RangaId = 2, PoliceStationId = 2 },
-                new Policeman { PolicemanId = 3, FirstName = "Tomasz", Surname = "Działowy", RangaId = 3, PoliceStationId = 3 },
-                new Policeman { PolicemanId = 4, FirstName = "Antoni", Surname = "Macierewicz", RangaId = 4, PoliceStationId = 4 },
-                new Policeman { PolicemanId = 5, FirstName = "Darth", Surname = "Vader", RangaId = 5, PoliceStationId = 2 },
-                new Policeman { PolicemanId = 6, FirstName = "Adam", Surname="Pogorzelski", RangaId=1, PoliceStationId=2 }
+                new Policeman { PolicemanId = 1, FirstName = "Admin", Surname = "Admin", RankId = 18, PoliceStationId = 1, IsActive = false },
+                new Policeman { PolicemanId = 2, FirstName = "Krzysztof", Surname = "Gonciarz", RankId = 2, PoliceStationId = 2 },
+                new Policeman { PolicemanId = 3, FirstName = "Tomasz", Surname = "Działowy", RankId = 3, PoliceStationId = 3 },
+                new Policeman { PolicemanId = 4, FirstName = "Antoni", Surname = "Macierewicz", RankId = 4, PoliceStationId = 4 },
+                new Policeman { PolicemanId = 5, FirstName = "Darth", Surname = "Vader", RankId = 5, PoliceStationId = 2 },
+                new Policeman { PolicemanId = 6, FirstName = "Adam", Surname="Pogorzelski", RankId=1, PoliceStationId=2 }
             );
             modelBuilder.Entity<Rank>().HasData(
-                new Rank { RangaId = 1, Name = "Posterunkowy", Salary = 2800 },
-                new Rank { RangaId = 2, Name = "Starszy Posterunkowy", Salary = 2900 },
-                new Rank { RangaId = 3, Name = "Sierżant", Salary = 3000 },
-                new Rank { RangaId = 4, Name = "Starszy Sierżant", Salary = 3100 },
-                new Rank { RangaId = 5, Name = "Sierżant Sztabowy", Salary = 3200 },
-                new Rank { RangaId = 6, Name = "Młodszy Aspirant", Salary = 3300 },
-                new Rank { RangaId = 7, Name = "Aspirant", Salary = 3400 },
-                new Rank { RangaId = 8, Name = "Starszy Aspirant", Salary = 3500 },
-                new Rank { RangaId = 9, Name = "Aspirant Sztabowy", Salary = 3600 },
-                new Rank { RangaId = 10, Name = "Podkomisarz", Salary = 3700 },
-                new Rank { RangaId = 11, Name = "Komisarz", Salary = 3800 },
-                new Rank { RangaId = 12, Name = "Nadkomisarz", Salary = 3900 },
-                new Rank { RangaId = 13, Name = "Podinspektor", Salary = 4000 },
-                new Rank { RangaId = 14, Name = "Młodszy Inspektor", Salary = 4100 },
-                new Rank { RangaId = 15, Name = "Inspektor", Salary = 4200 },
-                new Rank { RangaId = 16, Name = "Nadinspektor", Salary = 4300 },
-                new Rank { RangaId = 17, Name = "Generalny Inspektor", Salary = 4400 },
-                new Rank { RangaId = 18, Name = "Admin", Salary = 0, IsActive=false }
+                new Rank { RankId = 1, Name = "Posterunkowy", Salary = 2800 },
+                new Rank { RankId = 2, Name = "Starszy Posterunkowy", Salary = 2900 },
+                new Rank { RankId = 3, Name = "Sierżant", Salary = 3000 },
+                new Rank { RankId = 4, Name = "Starszy Sierżant", Salary = 3100 },
+                new Rank { RankId = 5, Name = "Sierżant Sztabowy", Salary = 3200 },
+                new Rank { RankId = 6, Name = "Młodszy Aspirant", Salary = 3300 },
+                new Rank { RankId = 7, Name = "Aspirant", Salary = 3400 },
+                new Rank { RankId = 8, Name = "Starszy Aspirant", Salary = 3500 },
+                new Rank { RankId = 9, Name = "Aspirant Sztabowy", Salary = 3600 },
+                new Rank { RankId = 10, Name = "Podkomisarz", Salary = 3700 },
+                new Rank { RankId = 11, Name = "Komisarz", Salary = 3800 },
+                new Rank { RankId = 12, Name = "Nadkomisarz", Salary = 3900 },
+                new Rank { RankId = 13, Name = "Podinspektor", Salary = 4000 },
+                new Rank { RankId = 14, Name = "Młodszy Inspektor", Salary = 4100 },
+                new Rank { RankId = 15, Name = "Inspektor", Salary = 4200 },
+                new Rank { RankId = 16, Name = "Nadinspektor", Salary = 4300 },
+                new Rank { RankId = 17, Name = "Generalny Inspektor", Salary = 4400 },
+                new Rank { RankId = 18, Name = "Admin", Salary = 0, IsActive=false }
 
                 );
             modelBuilder.Entity<PoliceCar>().HasData(

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EntityFramework.Migrations
 {
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,7 +73,7 @@ namespace EntityFramework.Migrations
                 name: "Ranks",
                 columns: table => new
                 {
-                    RangaId = table.Column<int>(type: "int", nullable: false)
+                    RankId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Salary = table.Column<double>(type: "float", nullable: false),
@@ -81,7 +81,7 @@ namespace EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ranks", x => x.RangaId);
+                    table.PrimaryKey("PK_Ranks", x => x.RankId);
                 });
 
             migrationBuilder.CreateTable(
@@ -224,7 +224,7 @@ namespace EntityFramework.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RangaId = table.Column<int>(type: "int", nullable: false),
+                    RankId = table.Column<int>(type: "int", nullable: false),
                     PoliceStationId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -238,10 +238,10 @@ namespace EntityFramework.Migrations
                         principalColumn: "PoliceStationId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Policemans_Ranks_RangaId",
-                        column: x => x.RangaId,
+                        name: "FK_Policemans_Ranks_RankId",
+                        column: x => x.RankId,
                         principalTable: "Ranks",
-                        principalColumn: "RangaId",
+                        principalColumn: "RankId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -371,7 +371,7 @@ namespace EntityFramework.Migrations
 
             migrationBuilder.InsertData(
                 table: "Ranks",
-                columns: new[] { "RangaId", "IsActive", "Name", "Salary" },
+                columns: new[] { "RankId", "IsActive", "Name", "Salary" },
                 values: new object[,]
                 {
                     { 18, false, "Admin", 0.0 },
@@ -444,7 +444,7 @@ namespace EntityFramework.Migrations
 
             migrationBuilder.InsertData(
                 table: "Policemans",
-                columns: new[] { "PolicemanId", "FirstName", "IsActive", "PoliceStationId", "RangaId", "Surname" },
+                columns: new[] { "PolicemanId", "FirstName", "IsActive", "PoliceStationId", "RankId", "Surname" },
                 values: new object[,]
                 {
                     { 1, "Admin", false, 1, 18, "Admin" },
@@ -506,9 +506,9 @@ namespace EntityFramework.Migrations
                 column: "PoliceStationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Policemans_RangaId",
+                name: "IX_Policemans_RankId",
                 table: "Policemans",
-                column: "RangaId");
+                column: "RankId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PoliceStations_Region_CityId",

@@ -24,7 +24,7 @@
         </Rectangle>
 
         <Label Name="CurrentMode" Content="Nowa pozycja" FontSize="18" HorizontalAlignment="Left" Margin="751,147,0,0" VerticalAlignment="Top"/>
-        <Button Name="AddEdit" Content="Dodaj" HorizontalAlignment="Left" Margin="776,371,0,0" VerticalAlignment="Top"  Click="Button_Click_DodajOrEdytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+        <Button Name="AddEdit" Content="Add" HorizontalAlignment="Left" Margin="776,371,0,0" VerticalAlignment="Top"  Click="Button_Click_DodajOrEdytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -38,7 +38,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Usuń" Margin="821,412,35,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Delete"  Height="26" Width="90" FontSize="15"  Background="Red">
+        <Button Content="Delete" Margin="821,412,35,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Delete"  Height="26" Width="90" FontSize="15"  Background="Red">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -47,7 +47,7 @@
         </Button>
         <Label Content="Panel zarządzania policjantami" FontFamily="Cooper Black"
   FontSize="36" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top"/>
-        <Label Content="Imię" FontSize="18" HorizontalAlignment="Left" Margin="688,186,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name" FontSize="18" HorizontalAlignment="Left" Margin="688,186,0,0" VerticalAlignment="Top"/>
         <Label Content="Surname" FontSize="18" HorizontalAlignment="Left" Margin="652,212,0,0" VerticalAlignment="Top"/>
         <Label Content="Login" FontSize="18" HorizontalAlignment="Left" Margin="680,238,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="FilterId" HorizontalAlignment="Left" Margin="28,86,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
@@ -69,7 +69,7 @@
                     <GridViewColumn x:Name="IdHeader" Header="ID"  Width="20" DisplayMemberBinding="{Binding UserId}" />
                     <GridViewColumn x:Name="ImieHeader" Header="FirstName" Width="110" DisplayMemberBinding="{Binding Policeman.FirstName}"/>
                     <GridViewColumn x:Name="SurnameHeader" Header="Surname"  Width="100" DisplayMemberBinding="{Binding Policeman.Surname}"/>
-                    <GridViewColumn x:Name="RangaHeader" Header="Ranga"  Width="120" DisplayMemberBinding="{Binding Policeman.Ranga.Name}"/>
+                    <GridViewColumn x:Name="RangaHeader" Header="Rank"  Width="120" DisplayMemberBinding="{Binding Policeman.Rank.Name}"/>
                     <GridViewColumn x:Name="KomendaIdHeader" Header="ID Komendy"  Width="70" DisplayMemberBinding="{Binding Policeman.PoliceStation.PoliceStationId}"/>
                     <GridViewColumn x:Name="KomendaHeader" Header="Address Komendy"  Width="130" DisplayMemberBinding="{Binding Policeman.PoliceStation.Address}"/>
                 </GridView>
@@ -82,16 +82,16 @@
         <TextBox x:Name="Password"  Background="White" HorizontalAlignment="Left" Margin="751,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="25" RenderTransformOrigin="0.45,2.463"/>
         <ComboBox Name="RangaBox" HorizontalAlignment="Left" Margin="751,307,0,0" VerticalAlignment="Top" Width="140" Height="25" DisplayMemberPath="Name" />
         <ComboBox Name="KomendaBox" HorizontalAlignment="Left" Margin="751,337,0,0" VerticalAlignment="Top" Width="140" Height="25" DisplayMemberPath="PoliceStationId" />
-        <Label Content="Ranga" FontSize="18" HorizontalAlignment="Left" Margin="677,303,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rank" FontSize="18" HorizontalAlignment="Left" Margin="677,303,0,0" VerticalAlignment="Top"/>
         <Label Content="PoliceStation" FontSize="18" HorizontalAlignment="Left" Margin="651,333,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="EditButton" Content="Edytuj" Margin="707,412,149,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+        <Button x:Name="EditButton" Content="Edit" Margin="707,412,149,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="Refresh" Content="Odśwież" Margin="811,65,45,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+        <Button x:Name="Refresh" Content="Refresh" Margin="811,65,45,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

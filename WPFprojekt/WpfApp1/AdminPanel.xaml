@@ -17,11 +17,11 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Margin="10" Text="Panel Administratora"/>
+            <TextBlock Grid.Row="0" Margin="10" Text="Admin Panel"/>
             <StackPanel Grid.Row="1" Margin="0, 10" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Zarządzanie Policjantami" Click="Button_Click_Policjanci"/>
-                <Button Content="Zarządzanie Radiowozami" Click="Button_Click_Radiowozy"/>
-                <Button Content="Zarządzanie Komisariatami" Click="Button_Click_Komisariaty"/>
+                <Button Content="Manage Policemen" Click="Button_Click_Policjanci"/>
+                <Button Content="Manage Police Cars" Click="Button_Click_Radiowozy"/>
+                <Button Content="Manage Police Stations" Click="Button_Click_Komisariaty"/>
                 <StackPanel.Resources>
                     <Style TargetType="Button">
                         <Style.Resources>
@@ -49,7 +49,7 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Frame x:Name="AdminPages" Panel.ZIndex="10" NavigationUIVisibility="Hidden" Navigated="AdminPages_Navigated"/>
-            <TextBlock Text="//TODO WSTAWIĆ OBRAZEK" VerticalAlignment="Center"/>
+            <TextBlock Text="" VerticalAlignment="Center"/>
         </Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock">

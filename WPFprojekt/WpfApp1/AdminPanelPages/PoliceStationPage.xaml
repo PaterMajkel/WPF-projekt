@@ -24,14 +24,14 @@
         </Rectangle>
         <Image Margin="91,131,493,174" Stretch="Fill" Source="/Images/Police2.jpg" />
         <Label x:Name="CurrentMode" Content="Nowa pozycja" FontSize="20" HorizontalAlignment="Left" Margin="723,160,0,0" VerticalAlignment="Top"/>
-        <Button Name="AddEdit" Content="Dodaj" HorizontalAlignment="Left" Margin="748,348,0,0" VerticalAlignment="Top" Height="27" Width="90" FontSize="15" Click="Button_Click_DodajOrEdytuj" Background="CadetBlue">
+        <Button Name="AddEdit" Content="Add" HorizontalAlignment="Left" Margin="748,348,0,0" VerticalAlignment="Top" Height="27" Width="90" FontSize="15" Click="Button_Click_DodajOrEdytuj" Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Usuń" Margin="801,403,55,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Usun"  Height="27" Width="90" FontSize="15" Background="Red">
+        <Button Content="Delete" Margin="801,403,55,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Usun"  Height="27" Width="90" FontSize="15" Background="Red">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -58,7 +58,7 @@
         <TextBox x:Name="Address" HorizontalAlignment="Left" Margin="723,202,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="25" TextChanged="Adres_TextChanged"/>
         <ComboBox Name="MiastoBox" HorizontalAlignment="Left" Margin="723,250,0,0" VerticalAlignment="Top" Width="140" Height="24" DisplayMemberPath="Name" SelectionChanged="ComboBoxMiasto_SelectionChanged"/>
         <ComboBox Name="RegionBox" HorizontalAlignment="Left" Margin="723,301,0,0" VerticalAlignment="Top" Width="140" Height="25" DisplayMemberPath="Name" SelectionChanged="ComboBoxRegion_SelectionChanged"/>
-        <Button x:Name="EditButton" Content="Edytuj" Margin="684,403,172,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+        <Button x:Name="EditButton" Content="Edit" Margin="684,403,172,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj"  Height="27" Width="90" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -72,7 +72,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="Refresh" Content="Odśwież" Margin="801,56,60,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh" FontSize="15" Height="29" Width="85" Background="CadetBlue">
+        <Button x:Name="Refresh" Content="Refresh" Margin="801,56,60,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh" FontSize="15" Height="29" Width="85" Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

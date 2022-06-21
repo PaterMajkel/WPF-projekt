@@ -25,7 +25,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="281,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
                   FontSize="28" Width="132"><Run Text="Surname"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="281,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-            FontSize="28" Width="86"><Run Text="Imię"/><Run Text=":"/></TextBlock>
+            FontSize="28" Width="86"><Run Text="Name"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="281,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
            FontSize="28" Width="86"><Run Text="Age"/><Run Text=":"/></TextBlock>
         <Label x:Name="Surname" HorizontalAlignment="Left" Margin="413,32,0,0" VerticalAlignment="Top"
@@ -35,7 +35,7 @@
         <Label Name="Age" HorizontalAlignment="Left" Margin="367,114,0,0"  VerticalAlignment="Top"
             FontStyle="Oblique" FontSize="28" Width="110" Height="61"/>
         <TextBlock HorizontalAlignment="Left" Margin="57,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="20" Width="319" Height="27"><Run Text="Przestępstwa"/><Run Language="pl-pl" Text=":"/></TextBlock>
+            FontStyle="Oblique" FontSize="20" Width="319" Height="27"><Run Text="Crimes"/><Run Language="pl-pl" Text=":"/></TextBlock>
         <ListView  Name="ListViewColumnsPrzestepstwa" Margin="57,246,475,39">
             <ListView.View>
                 <GridView>
@@ -57,7 +57,7 @@
             </ListView.View>
         </ListView>
         <TextBlock HorizontalAlignment="Left" Margin="509,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-            FontStyle="Oblique" FontSize="20" Width="319" Height="27"><Run Language="pl-pl" Text="Wykroczenia:"/></TextBlock>
+            FontStyle="Oblique" FontSize="20" Width="319" Height="27"><Run Language="pl-pl" Text="Felonies:"/></TextBlock>
 
 
     </Grid>

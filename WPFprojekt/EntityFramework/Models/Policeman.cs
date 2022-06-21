@@ -13,8 +13,8 @@ namespace EntityFramework.Models
         public int PolicemanId { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
-        public int RangaId { get; set; }
-        public Rank Ranga { get; set; }
+        public int RankId { get; set; }
+        public Rank Rank { get; set; }
         public int PoliceStationId { get; set; }
         public PoliceStation PoliceStation { get; set; }
         public ICollection<Felony> Felonys { get; set; }
