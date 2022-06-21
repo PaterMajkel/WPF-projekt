@@ -24,7 +24,7 @@ namespace PoliceApp
         string login;
         List<Button> buttons;
         SharedData uzytkownik;
-        public DatabaseService databaseService = new DatabaseService();
+        public DatabaseService databaseService = new();
         public LoginPanel(ref Button userButt, ref Button adminButt)
         {
             buttons = new List<Button>();

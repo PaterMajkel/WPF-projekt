@@ -104,12 +104,17 @@ namespace PoliceApp
         {
             FelonyCrimeWindow form = new()
             {
-                MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                Owner = Window.GetWindow(this)
+            };
+            form.ShowDialog();
+            var newFelony = form.felony;
+            if (newFelony != null)
+            {
+                databaseService.AddFelony(newFelony);
+                Refresh();
             }
-            databaseService.AddFelony(new Felony { Name = nazwa, Date = dzien, Hour = godzina });
-            Refresh();
         }
+
         private void Refresh()
         {
             data = databaseService.GetFelonys();

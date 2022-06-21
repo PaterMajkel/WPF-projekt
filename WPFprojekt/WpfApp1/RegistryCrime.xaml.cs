@@ -27,9 +27,6 @@ namespace PoliceApp
         public DatabaseService databaseService = new();
         public ICollection<Crime> data;
         public bool IdOrder = false;
-        public string nazwa;
-        public string dzien;
-        public string godzina;
 
         //public DatePicker data;
 

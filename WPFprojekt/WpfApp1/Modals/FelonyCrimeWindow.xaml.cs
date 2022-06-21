@@ -33,7 +33,7 @@ namespace PoliceApp.Modals
           
             if (Name.Text.Length == 0 || Hour.Text.Length == 0 || Date.Text.Length == 0)
             {
-                MessageBox.Show("Wprowadzone dane nie mogą być puste", "Błąd", MessageBoxButton.OK,
+                MessageBox.Show("Values must not be empty", "Error", MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
             }
