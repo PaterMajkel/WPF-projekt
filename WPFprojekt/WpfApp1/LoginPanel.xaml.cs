@@ -57,9 +57,13 @@ namespace PoliceApp
             }
             foreach (var button in buttons)
                 button.IsEnabled = false;
-            MessageBox.Show("Złe dane logowania","Błąd!", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Wrong login data","Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

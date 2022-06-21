@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d"
-      Title="RegistryPage" Height="400" Width="900">
+      Title="RegistryPage">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -25,7 +25,7 @@
                 <GridView>
                     <GridViewColumn x:Name="IdHeader" Header="ID" Width="20"
                                     DisplayMemberBinding="{Binding RegisterId}" />
-                    <GridViewColumn x:Name="ImieHeader" Header="Imię" Width="110"
+                    <GridViewColumn x:Name="ImieHeader" Header="Name" Width="110"
                                     DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn x:Name="SurnameHeader" Header="Surname" Width="110"
                                     DisplayMemberBinding="{Binding Surname}" />

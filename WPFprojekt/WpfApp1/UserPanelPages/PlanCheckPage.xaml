@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d"
-       Title="Plan" Height="400" Width="900">
+       Title="Plan">
     <Grid >
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -14,7 +14,8 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
-        <Rectangle HorizontalAlignment="Left" Height="400" Margin="24,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="904">
+        
+        <Rectangle HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="Blue" Offset="0.0" />
@@ -23,21 +24,23 @@
             </Rectangle.Fill>
         </Rectangle>
         <Image Margin="91,131,493,174" Stretch="Fill" Source="/Images/Police2.jpg" />
-        <Label Content="Plan Służby" FontFamily="Cooper Black"
-  FontSize="36" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top"/>
-        <ListView Name="ListViewColumns" Margin="58,102,58,102">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="IdHeader" Header="ID Radiowozu"  Width="120" DisplayMemberBinding="{Binding PoliceCarId}" />
-                    <GridViewColumn x:Name="DataRHeader" Header="Data rozpoczęcia" Width="150" DisplayMemberBinding="{Binding Start_Date}"/>
-                    <GridViewColumn x:Name="DataZHeader" Header="Data zakończenia"  Width="150" DisplayMemberBinding="{Binding Data_zakonczenia}"/>
-                    <GridViewColumn x:Name="GodzinaRHeader" Header="Godzina rozpoczęcia"  Width="150" DisplayMemberBinding="{Binding Start_Hour}"/>
-                    <GridViewColumn x:Name="GodzinaZHeader" Header="Godzina zakończenia"  Width="150" DisplayMemberBinding="{Binding End_hour}"/>
 
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="Abort" Content="Zatrzymaj" Visibility="Hidden"  HorizontalAlignment="Left" Margin="775,280,0,0" VerticalAlignment="Top" Height="31" Width="61"/>
+        <StackPanel>
+            <Label Content="Plan of Duty" FontFamily="Cooper Black"
+  FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ListView Name="ListViewColumns" MinHeight="400">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="IdHeader" Header="Police car ID"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
+                        <GridViewColumn x:Name="DataRHeader" Header="Start date" Width="150" DisplayMemberBinding="{Binding Start_Date}"/>
+                        <GridViewColumn x:Name="DataZHeader" Header="End Date"  Width="150" DisplayMemberBinding="{Binding Data_zakonczenia}"/>
+                        <GridViewColumn x:Name="GodzinaRHeader" Header="Start hour"  Width="150" DisplayMemberBinding="{Binding Start_Hour}"/>
+                        <GridViewColumn x:Name="GodzinaZHeader" Header="End hour"  Width="150" DisplayMemberBinding="{Binding End_hour}"/>
 
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="Abort" Content="Zatrzymaj" Visibility="Hidden"  HorizontalAlignment="Left"  VerticalAlignment="Top" Height="31" Width="61"/>
+        </StackPanel>
     </Grid>
 </Page>

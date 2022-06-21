@@ -104,19 +104,12 @@ namespace PoliceApp
         {
             FelonyCrimeWindow form = new()
             {
-                Owner = Window.GetWindow(this)
-            };
-            form.ShowDialog();
-            var newFelony = form.felony;
-            if (newFelony != null)
-            {
-                databaseService.AddFelony(newFelony);
-                Refresh();
+                MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-
-            return;
+            databaseService.AddFelony(new Felony { Name = nazwa, Date = dzien, Hour = godzina });
+            Refresh();
         }
-
         private void Refresh()
         {
             data = databaseService.GetFelonys();
@@ -138,7 +131,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<Felony>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

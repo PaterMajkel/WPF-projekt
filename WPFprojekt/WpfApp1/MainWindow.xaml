@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Panel Główny" Height="450" Width="800" SizeToContent="Manual" WindowState="Normal"  Background="#FF85D8FF">
+        Title="Main Panel" Height="450" Width="800" SizeToContent="Manual" WindowState="Normal"  Background="#FF85D8FF">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -37,11 +37,11 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Panel Główny" VerticalAlignment="Center"
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Main Panel" VerticalAlignment="Center"
                        FontStyle="Oblique" FontSize="35"/>
-            <Button Grid.Row="1" Content="Panel Logowania" Click="Login_Button_Click"/>
-            <Button Grid.Row="2" Name="UserPanel" IsEnabled="False" Content="Panel Policjanta" Click="UserPanel_Click"/>
-            <Button Grid.Row="3" Name="AdminPanel" IsEnabled="False" Content="Panel Administratora" Click="AdminPanel_Click"/>
+            <Button Grid.Row="1" Content="User Login" Click="Login_Button_Click"/>
+            <Button Grid.Row="2" Name="UserPanel" IsEnabled="False" Content="Policeman Panel" Click="UserPanel_Click"/>
+            <Button Grid.Row="3" Name="AdminPanel" IsEnabled="False" Content="Admin Panel" Click="AdminPanel_Click"/>
             <Grid.Resources>
                 <Style TargetType="Button">
                     <Style.Resources>

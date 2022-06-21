@@ -64,7 +64,7 @@ namespace PoliceApp
                     IdOrder = !IdOrder;
                     break;
                 }
-                case "Imię":
+                case "Name":
                 {
                     if (!IdOrder)
                     {
@@ -135,7 +135,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<Register>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

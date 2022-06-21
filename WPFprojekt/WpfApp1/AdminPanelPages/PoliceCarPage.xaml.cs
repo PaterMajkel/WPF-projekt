@@ -104,17 +104,17 @@ namespace PoliceApp
             {
                 if (marka == null || model == null || rocznik == 0 || ilosc == 0)
                 {
-                    MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Inserted wrong data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (rocznik <= 2005 || rocznik >= 2021)
                 {
-                    MessageBox.Show("Samochod nie moze byc starszy niz z 2005 roku lub pochodzić z przyszłości ", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Samochod nie moze byc starszy niz z 2005 roku lub pochodzić z przyszłości ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (ilosc <= 0)
                 {
-                    MessageBox.Show("Zła ilość", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Zła ilość", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 for (int i = 0; i < ilosc; i++)
@@ -154,7 +154,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<PoliceCar>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeletePoliceCars(selected);
@@ -189,7 +189,7 @@ namespace PoliceApp
         public void AbortChange()
         {
             editMode = false;
-            AddEdit.Content = "Dodaj";
+            AddEdit.Content = "Add";
             Abort.Visibility = Visibility.Hidden;
             CurrentMode.Content = $"Nowa pozycja";
             EditButton.IsEnabled = true;
@@ -207,19 +207,19 @@ namespace PoliceApp
             selectedToEdit = (PoliceCar)ListViewColumns.SelectedItem;
             if (selectedToEdit == null)
             {
-                MessageBox.Show("Błąd przy edytowaniu!", "Edytuj", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error przy edytowaniu!", "Edit", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             editMode = true;
-            AddEdit.Content = "Zmień";
+            AddEdit.Content = "Change";
             EditButton.IsEnabled = false;
             Abort.Visibility = Visibility.Visible;
             Brand.Text = selectedToEdit.Brand;
             Model.Text = selectedToEdit.Model;
             Rocznik.Text = selectedToEdit.ProductionYear.ToString();
             Ilosc.IsEnabled = false;
-            CurrentMode.Content = $"Edytuj pozycję";
+            CurrentMode.Content = $"Edit pozycję";
         }
     }
 }

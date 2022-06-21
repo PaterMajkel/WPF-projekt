@@ -32,7 +32,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Margin="0, 0, 0, 10" FontSize="28" HorizontalAlignment="Center"><Run Language="pl-pl" Text="Wykroczenie" FontFamily="Cooper Black"/></TextBlock>
+            <TextBlock Grid.Row="0" Margin="0, 0, 0, 10" FontSize="28" HorizontalAlignment="Center"><Run Language="pl-pl" Text="Felony" FontFamily="Cooper Black"/></TextBlock>
                 <StackPanel Grid.Row="1">
                     <TextBlock><Run Language="pl-pl" Text="Name:"/></TextBlock>
                     <Label x:Name="Name"></Label>
@@ -73,7 +73,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                <Label Content="Wybierz osobę z kartoteki:"/>
+                <Label Content="Choose person from registry:"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -81,8 +81,8 @@
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <ComboBox Grid.Column="0" Name="KartotekaBox" DisplayMemberPath="RegisterId"/>
-                        <Button Grid.Column="1" Name="AddSprawca" Content="Dodaj" Background="CadetBlue" Click="AddSprawca_Click"/>
-                        <Button Grid.Column="2" x:Name="DeleteSprawca" Content="Usuń" Background="Red" Click="Delete_Sprawca_Click"/>
+                        <Button Grid.Column="1" Name="AddSprawca" Content="Add" Background="CadetBlue" Click="AddSprawca_Click"/>
+                        <Button Grid.Column="2" x:Name="DeleteSprawca" Content="Delete" Background="Red" Click="Delete_Sprawca_Click"/>
                     </Grid>
                 </StackPanel>
                 <Grid Grid.Row="1">
@@ -90,7 +90,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Sprawcy:"/></TextBlock>
+                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Causers:"/></TextBlock>
                     <ListView Grid.Row="1" Name="ListViewColumnsSprawcy" MaxWidth="350">
                         <ListView.View>
                             <GridView>
@@ -110,7 +110,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                    <Label Content="Wybierz policjanta:"/>
+                    <Label Content="Choose policeman:"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -118,8 +118,8 @@
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <ComboBox Grid.Column="0" Name="PolicjantBox" DisplayMemberPath="PolicemanId"/>
-                        <Button Grid.Column="1" x:Name="Add_Policjant" Content="Dodaj" Background="CadetBlue" Click="Add_Policjant_Click"/>
-                        <Button Grid.Column="2" x:Name="Delete_Policjant" Content="Usuń" Background="Red" Click="Delete_Policjant_Click"/>
+                        <Button Grid.Column="1" x:Name="Add_Policjant" Content="Add" Background="CadetBlue" Click="Add_Policjant_Click"/>
+                        <Button Grid.Column="2" x:Name="Delete_Policjant" Content="Delete" Background="Red" Click="Delete_Policjant_Click"/>
                     </Grid>
                 </StackPanel>
                 <Grid Grid.Row="1">
@@ -127,15 +127,15 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Policjanci na miejscu:"/></TextBlock>
+                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Policemen at place:"/></TextBlock>
                     <ListView Grid.Row="1" x:Name="ListViewColumnsPolicjanci" MaxWidth="450">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn x:Name="IdHeader1" Header="ID"  Width="30" DisplayMemberBinding="{Binding PolicemanId}" />
                                 <GridViewColumn x:Name="ImieHeader1" Header="FirstName" Width="100" DisplayMemberBinding="{Binding  FirstName}"/>
                                 <GridViewColumn x:Name="SurnameHeader1" Header="Surname"  Width="120" DisplayMemberBinding="{Binding  Surname}"/>
-                                <GridViewColumn x:Name="RangaHeader1" Header="Ranga"  Width="100" DisplayMemberBinding="{Binding Ranga.Name}"/>
-                                <GridViewColumn x:Name="KomendaHeader1" Header="KomendaID"  Width="100" DisplayMemberBinding="{Binding PoliceStationId}"/>
+                                <GridViewColumn x:Name="RangaHeader1" Header="Rank"  Width="100" DisplayMemberBinding="{Binding Rank.Name}"/>
+                                <GridViewColumn x:Name="KomendaHeader1" Header="PoliceStation ID"  Width="100" DisplayMemberBinding="{Binding PoliceStationId}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

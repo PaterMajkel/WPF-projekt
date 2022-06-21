@@ -132,7 +132,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<PoliceStation>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeletePoliceStations(selected);
@@ -149,17 +149,17 @@ namespace PoliceApp
             selectedToEdit = (PoliceStation)ListViewColumns.SelectedItem;
             if (selectedToEdit == null)
             {
-                MessageBox.Show("Błąd przy edytowaniu!", "Edytuj", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error przy edytowaniu!", "Edit", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
             editMode = true;
-            AddEdit.Content = "Zmień";
+            AddEdit.Content = "Change";
             EditButton.IsEnabled = false;
             Abort.Visibility = Visibility.Visible;
             Address.Text = selectedToEdit.Address;
 
-            CurrentMode.Content = $"Edytuj pozycję";
+            CurrentMode.Content = $"Edit pozycję";
             MiastoBox.SelectedItem = selectedToEdit.Region_City.City;
             RegionBox.SelectedItem = selectedToEdit.Region_City;
 
@@ -184,12 +184,12 @@ namespace PoliceApp
             {
                 if (pickedMiasto == null || pickedRegion == null || adres==null)
                 {
-                    MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Inserted wrong data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (adres.Length == 0)
                 {
-                    MessageBox.Show("Address nie może być pusty", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Address nie może być pusty", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -228,7 +228,7 @@ namespace PoliceApp
         public void AbortChange()
         {
             editMode = false;
-            AddEdit.Content = "Dodaj";
+            AddEdit.Content = "Add";
             Abort.Visibility = Visibility.Hidden;
             CurrentMode.Content = $"Nowa pozycja";
             EditButton.IsEnabled = true;
