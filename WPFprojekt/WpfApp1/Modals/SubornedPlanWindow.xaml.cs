@@ -25,7 +25,7 @@ namespace PoliceApp.Modals
         private ICollection<PoliceCar> radiowozy;
 
         private DatabaseService databaseService = new();
-        private SharedData user = SharedData.GetInstance(null);
+        public Patrol patrol;
 
 
         public SubornedPlanWindow(List<Policeman> policemen)
@@ -50,7 +50,7 @@ namespace PoliceApp.Modals
                 return;
             }
 
-            databaseService.AddPatrol(new Patrol
+            patrol = new Patrol
             {
                 Start_Date = Data_roz.Text,
                 Data_zakonczenia = Data_zak.Text,
@@ -58,7 +58,7 @@ namespace PoliceApp.Modals
                 End_hour = Data_zak.Text,
                 PoliceCarId = ((PoliceCar) RadiowozBox.SelectedItem).PoliceCarId,
                 Policemans = policemen
-            });
+            };
             Close();
         }
     }

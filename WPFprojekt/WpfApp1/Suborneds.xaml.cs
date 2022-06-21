@@ -139,7 +139,12 @@ namespace PoliceApp
                 Owner = Window.GetWindow(this)
             };
             form.ShowDialog();
-            RefreshData();
+            var newPatrol = form.patrol;
+            if (newPatrol != null)
+            {
+                databaseService.AddPatrol(newPatrol);
+                RefreshData();
+            }
             return;
         }
 
