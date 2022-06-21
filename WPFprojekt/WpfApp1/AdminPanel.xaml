@@ -6,17 +6,12 @@
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
         Title="AdminPanel" Height="600" Width="946">
-    <Grid>
+    <Grid Style="{StaticResource GridGradient}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="DodgerBlue" Offset="1" />
-                <GradientStop Color="DarkBlue" Offset="0" />
-            </LinearGradientBrush>
-        </Grid.Background>
+        
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>

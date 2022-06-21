@@ -6,18 +6,13 @@
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
         Title="PlanOfSuborned" Height="516" Width="946">
-    <Grid>
+    <Grid Style="{StaticResource GridGradient}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="Blue" Offset="0.0" />
-                <GradientStop Color="Cyan" Offset="1.0" />
-            </LinearGradientBrush>
-        </Grid.Background>
+        
         <!--<Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
         <Rectangle HorizontalAlignment="Left" Height="400" Margin="24,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="904">
             <Rectangle.Fill>

@@ -6,17 +6,12 @@
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
         Title="FelonySingle" Height="532" Width="916">
-    <Grid>
+    <Grid Style="{StaticResource GridGradient}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="LightBlue" Offset="1" />
-                <GradientStop Color="Blue" Offset="0" />
-            </LinearGradientBrush>
-        </Grid.Background>
+        
         <!--<Rectangle  HorizontalAlignment="Left" Height="482" Margin="32,24,0,0" Stroke="Black" VerticalAlignment="Top" Width="855">
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
