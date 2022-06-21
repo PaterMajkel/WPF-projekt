@@ -62,7 +62,7 @@ namespace PoliceApp
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Imię":
+                case "Name":
                     {
                         if (!IdOrder)
                         {
@@ -110,12 +110,12 @@ namespace PoliceApp
         {
             if (imie == null || nazwisko == null || wiek == 0 || pickedImage == null)
             {
-                MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Inserted wrong data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else if(wiek<=17 || wiek>=100)
             {
-                MessageBox.Show("Age nie może być mniejszy niż 17 i większy od 100 ", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Age nie może być mniejszy niż 17 i większy od 100 ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -146,7 +146,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<Register>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeleteRegistries(selected);

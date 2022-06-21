@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
-        Title="Panel Użytkownika"  Height="600" Width="946">
+        Title="User panel"  Height="600" Width="946">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -28,9 +28,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Zarządzanie Podwladnymi" Click="Button_Click_Podwladni"/>
-                <Button Grid.Column="1" Content="Sprawdź Plan" Click="Button_Click_Plan"/>
-                <Button Grid.Column="2" Content="Zarządzanie Kartoteką" Click="Button_Click_Kartoteka"/>
+                <Button Grid.Column="0" Content="Manage Suborneds" Click="Button_Click_Podwladni"/>
+                <Button Grid.Column="1" Content="Check your plan" Click="Button_Click_Plan"/>
+                <Button Grid.Column="2" Content="Manage Registry" Click="Button_Click_Kartoteka"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -38,9 +38,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Zarządzanie Wykroczeniami" Click="Button_Click_Wykroczenia"/>
-                <Button Grid.Column="1" Content="Zarządzanie Przestępstwami" Click="Button_Click_Przestepstwa"/>
-                <Button Grid.Column="2" Content="Zarządzanie Regionami" Click="Button_Click_Regiony"/>
+                <Button Grid.Column="0" Content="Mangage felonies" Click="Button_Click_Wykroczenia"/>
+                <Button Grid.Column="1" Content="Manage crimes" Click="Button_Click_Przestepstwa"/>
+                <Button Grid.Column="2" Content="Manage regions" Click="Button_Click_Regiony"/>
             </Grid>
             <Grid.Resources>
                     <Style TargetType="Button">

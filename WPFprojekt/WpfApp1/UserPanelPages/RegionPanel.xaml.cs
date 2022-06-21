@@ -25,7 +25,7 @@ namespace PoliceApp
         public bool IdOrder = false;
         public ICollection<Region_City> data;
         private DatabaseService databaseService = new();
-        private string[] levels = { "Niski", "Średni", "Wysoki", "Śmiertelny" };
+        private string[] levels = { "Low", "Medium", "High", "Hide your kids" };
         private bool editMode = false;
         private Region_City selectedToEdit;
         public RegionPanel()
@@ -87,7 +87,7 @@ namespace PoliceApp
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Stopień zagrożenia":
+                case "Danger stage":
                     {
                         if (!IdOrder)
                         {

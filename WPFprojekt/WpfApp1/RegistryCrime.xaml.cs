@@ -100,7 +100,7 @@ namespace PoliceApp
         {
             if (nazwa == null || dzien == null ||  godzina== null)
             {
-                MessageBox.Show("Wprowadzono złe dane", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Inserted wrong data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.AddCrime(new Crime { Name = nazwa, Date = dzien, Hour = godzina, });
@@ -128,7 +128,7 @@ namespace PoliceApp
             var selected = ListViewColumns.SelectedItems.Cast<Crime>().ToList();
             if (selected == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeleteCrimes(selected);

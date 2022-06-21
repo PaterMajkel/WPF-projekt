@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoliceApp"
         mc:Ignorable="d"
-       Title="Kartoteka Zdarzenie " Height="516" Width="946">
+       Title="Registry Event ">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -27,7 +27,7 @@
             </Rectangle.Fill>
         </Rectangle>-->
         <Grid Grid.Row="0">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontStyle="Oblique" FontSize="40" ><Run Language="pl-pl" Text="Wykroczenie"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontStyle="Oblique" FontSize="40" ><Run Language="pl-pl" Text="Felony"/></TextBlock>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -77,8 +77,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" x:Name="Delete" Content="Usuń" Background="Red" Click="Button_Click_Usun"/>
-                    <Button Grid.Column="1" Name="AddEdit" Content="Dodaj" Background="CadetBlue" Click="Button_Click_Dodaj"/>
+                    <Button Grid.Column="0" x:Name="Delete" Content="Delete" Background="Red" Click="Button_Click_Usun"/>
+                    <Button Grid.Column="1" Name="AddEdit" Content="Add" Background="CadetBlue" Click="Button_Click_Dodaj"/>
                     <Grid.Resources>
                         <Style TargetType="Button">
                             <Style.Resources>

@@ -89,12 +89,12 @@ namespace PoliceApp
                 {
                     if (!IdOrder)
                     {
-                        data = data.OrderByDescending(id => id.Ranga.Name).ToList();
+                        data = data.OrderByDescending(id => id.Rank.Name).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
 
-                    data = data.OrderBy(id => id.Ranga.Name).ToList();
+                    data = data.OrderBy(id => id.Rank.Name).ToList();
                     IdOrder = !IdOrder;
                     break;
                 }
@@ -130,7 +130,7 @@ namespace PoliceApp
         {
             if (ListViewColumns.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Nikogo nie wybrałeś", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("You didn't choose anybody", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d"
-      Title="Podwładni" Height="400" Width="900">
+      Title="Suborneds">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -28,7 +28,7 @@
         <!--     </Rectangle.Fill> -->
         <!--     </Rectangle>  -->
         <Grid Grid.Row="0">
-            <Label Content="Ustawienie Planu Podwładnemu"
+            <Label Content="Set plan of suborneds"
                    VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Cooper Black" FontSize="36" />
 
         </Grid>
@@ -47,9 +47,9 @@
                                         DisplayMemberBinding="{Binding FirstName}" />
                         <GridViewColumn x:Name="SurnameHeader" Header="Surname" Width="100"
                                         DisplayMemberBinding="{Binding Surname}" />
-                        <GridViewColumn x:Name="RangaHeader" Header="Ranga" Width="150"
-                                        DisplayMemberBinding="{Binding Ranga.Name}" />
-                        <GridViewColumn x:Name="KomendaHeader" Header="Adres posterunku" Width="150"
+                        <GridViewColumn x:Name="RangaHeader" Header="Rank" Width="150"
+                                        DisplayMemberBinding="{Binding Rank.Name}" />
+                        <GridViewColumn x:Name="KomendaHeader" Header="Police station address" Width="150"
                                         DisplayMemberBinding="{Binding PoliceStation.Address}" />
 
                     </GridView>
@@ -60,7 +60,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Content="Dodaj" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <Button Grid.Row="0" Content="Add" HorizontalAlignment="Center" VerticalAlignment="Center"
                         RenderTransformOrigin="0.422,-1.782" MinWidth="100" Click="Button_Click_Dodaj" />
                 <Button Grid.Row="1" Content="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center"
                         RenderTransformOrigin="0.422,-1.782" MinWidth="100" Click="Button_Click" />

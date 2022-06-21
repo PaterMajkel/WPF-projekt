@@ -149,15 +149,15 @@ namespace PoliceApp
                         IdOrder = !IdOrder;
                         break;
                     }
-                case "Ranga.":
+                case "Rank.":
                     {
                         if (!IdOrder)
                         {
-                            przestepstwo.Policemans = przestepstwo.Policemans.OrderByDescending(id => id.RangaId).ToList();
+                            przestepstwo.Policemans = przestepstwo.Policemans.OrderByDescending(id => id.RankId).ToList();
                             IdOrder = !IdOrder;
                             break;
                         }
-                        przestepstwo.Policemans = przestepstwo.Policemans.OrderBy(id => id.RangaId).ToList();
+                        przestepstwo.Policemans = przestepstwo.Policemans.OrderBy(id => id.RankId).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
@@ -214,7 +214,7 @@ namespace PoliceApp
             var pickedPolicjants = ListViewColumnsPolicjanci.SelectedItems.Cast<Policeman>().ToList();
             if (pickedPolicjants == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeletePolicemenFromCrime(przestepstwo, pickedPolicjants);
@@ -227,7 +227,7 @@ namespace PoliceApp
             var pickedSprawcy = ListViewColumnsSprawcy.SelectedItems.Cast<Register>().ToList();
             if (pickedSprawcy == null)
             {
-                MessageBox.Show("Błąd przy usuwaniu!", "Usuń", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error during deletion!", "Delete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             databaseService.DeleteFelonFromCrime(przestepstwo, pickedSprawcy);

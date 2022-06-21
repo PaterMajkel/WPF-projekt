@@ -22,7 +22,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="Refresh" Content="Odśwież" Margin="756,51,83,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh" Height="30" FontSize="15"  Background="CadetBlue">
+        <Button x:Name="Refresh" Content="Refresh" Margin="756,51,83,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Refresh" Height="30" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -43,7 +43,7 @@
 
         <Label Name="CurrentMode" Content="Nowa pozycja" FontSize="20" HorizontalAlignment="Left" Margin="670,160,0,0" VerticalAlignment="Top"/>
 
-        <Button Name="AddEdit" Content="Dodaj" HorizontalAlignment="Left" Margin="692,367,0,0" VerticalAlignment="Top" Click="Button_Click_Dodaj" Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+        <Button Name="AddEdit" Content="Add" HorizontalAlignment="Left" Margin="692,367,0,0" VerticalAlignment="Top" Click="Button_Click_Dodaj" Height="27" Width="90" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -58,14 +58,14 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="EditButton" Content="Edytuj" Margin="635,419,221,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj" Height="27" Width="90" FontSize="15"  Background="CadetBlue">
+        <Button x:Name="EditButton" Content="Edit" Margin="635,419,221,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Edytuj" Height="27" Width="90" FontSize="15"  Background="CadetBlue">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="Delete" Content="Usuń" Margin="756,420,105,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Usun" Height="26" FontSize="15"  Background="Red">
+        <Button x:Name="Delete" Content="Delete" Margin="756,420,105,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,2.963" Click="Button_Click_Usun" Height="26" FontSize="15"  Background="Red">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
