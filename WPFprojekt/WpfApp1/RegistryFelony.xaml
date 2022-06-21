@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d"
       Title="Registry Event ">
-    <Grid>
+    <Grid Style="{StaticResource GridGradient}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
@@ -56,25 +56,9 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Content="Dodaj" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            Name="Add"
-                            RenderTransformOrigin="0.422,-1.782" MinWidth="100" Click="Button_Click_Dodaj" />
-                    <Button Grid.Row="1" Content="Usuń" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            Name="Remove" RenderTransformOrigin="0.422,-1.782" MinWidth="100"
-                            Click="Button_Click_Remove"
-                            Background="Red" />
-                    <Grid.Resources>
-                        <Style TargetType="Button">
-                            <Style.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10" />
-                                </Style>
-                            </Style.Resources>
-                            <Setter Property="FontSize" Value="20" />
-                            <Setter Property="Background" Value="CadetBlue" />
-                            <Setter Property="Height" Value="50" />
-                        </Style>
-                    </Grid.Resources>
+                    <Button Grid.Row="0" Content="Dodaj" Name="Add" Click="Button_Click_Dodaj" Style="{DynamicResource ButtonSuborneds}"/>
+                    <Button Grid.Row="1" Content="Usuń" Name="Remove" Click="Button_Click_Remove" Background="Red" Style="{DynamicResource ButtonSuborneds}"/>
+                    
                 </Grid>
             </Grid>
         </Grid>

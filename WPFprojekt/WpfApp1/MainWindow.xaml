@@ -5,13 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Main Panel" Height="450" Width="800" SizeToContent="Manual" WindowState="Normal"  Background="#FF85D8FF">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="DodgerBlue" Offset="1" />
-                <GradientStop Color="DarkBlue" Offset="0" />
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Style="{StaticResource GridGradient}">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="8*"/>
@@ -29,33 +24,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Rectangle Grid.Row="0" Grid.RowSpan="4" Stroke="Black" >
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                        <GradientStop Color="DeepSkyBlue" Offset="1" />
-                        <GradientStop Color="RoyalBlue" Offset="0" />
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
+            
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Main Panel" VerticalAlignment="Center"
                        FontStyle="Oblique" FontSize="35"/>
-            <Button Grid.Row="1" Content="User Login" Click="Login_Button_Click"/>
-            <Button Grid.Row="2" Name="UserPanel" IsEnabled="False" Content="Policeman Panel" Click="UserPanel_Click"/>
-            <Button Grid.Row="3" Name="AdminPanel" IsEnabled="False" Content="Admin Panel" Click="AdminPanel_Click"/>
-            <Grid.Resources>
-                <Style TargetType="Button">
-                    <Style.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10" />
-                        </Style>
-                    </Style.Resources>
-                    <Setter Property="FontSize" Value="25"/>
-                    <Setter Property="Background" Value="CadetBlue"/>
-                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                    <Setter Property="VerticalAlignment" Value="Stretch"/>
-                    <Setter Property="Margin" Value="30,10"/>
-                </Style>
-            </Grid.Resources>
+            <Button Grid.Row="1" Content="User Login" Click="Login_Button_Click" Style="{DynamicResource ButtonBigAnim}"/>
+            <Button Grid.Row="2" Name="UserPanel" IsEnabled="False" Content="Policeman Panel" Click="UserPanel_Click" Style="{DynamicResource ButtonBigAnim}"/>
+            <Button Grid.Row="3" Name="AdminPanel" IsEnabled="False" Content="Admin Panel" Click="AdminPanel_Click" Style="{DynamicResource ButtonBigAnim}"/>
+            
         </Grid>
     </Grid>
 </Window>

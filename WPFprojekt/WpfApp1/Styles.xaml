@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    
+
+
     <Style x:Key="ButtonBigAnim" TargetType="{x:Type Button}">
         <Style.Resources>
             <Style TargetType="Border">
@@ -38,14 +38,273 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="ButtonUserPanel" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Background" Value="CadetBlue"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="10, 5"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="3" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="23"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="20"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonSuborneds" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Background" Value="CadetBlue" />
+        <Setter Property="Height" Value="50" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="3" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="23"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="20"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonRegistryPanel" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Background" Value="CadetBlue" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="MinWidth" Value="150"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="3" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="23"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="20"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonAdminPanel" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontSize" Value="23"/>
+        <Setter Property="MinWidth" Value="280"/>
+        <Setter Property="MinHeight" Value="45"/>
+        <Setter Property="Margin" Value="10, 0"/>
+        <Setter Property="Background" Value="CadetBlue"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="3" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="23"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="20"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonFelonySingle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="MinWidth" Value="60"/>
+        <Setter Property="Margin" Value="10, 0, 0, 0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="2" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="23"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="20"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TextBlock2FelonySingle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontStyle" Value="Oblique"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <Style x:Key="ButtonLoginPanel" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Background" Value="CadetBlue" />
+        <Setter Property="Margin" Value="10,30" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="3" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="23"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                            <DoubleAnimation Duration="0:0:0.2" To="20"
+                                                         Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="LabelFelonySingle" TargetType="{x:Type Label}">
+        <Setter Property="FontStyle" Value="Oblique"/>
+        <Setter Property="Margin" Value="10, 0"/>
+        <Setter Property="FontSize" Value="28"/>
+    </Style>
+    
+    <Style x:Key="TextBlockFelonySingle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="Margin" Value="10, 0"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+    
+        <Style x:Key="TextBlockLoginPanel" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0, 15, 0, 5" />
+    </Style>
 
     <Style x:Key="GridGradient" TargetType="{x:Type Grid}">
         <Setter Property="Background">
             <Setter.Value>
-                    <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                        <GradientStop Color="LightBlue" Offset="1" />
-                        <GradientStop Color="Blue" Offset="0" />
-                    </LinearGradientBrush>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="LightBlue" Offset="1" />
+                    <GradientStop Color="Blue" Offset="0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BorderGradient" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="LightBlue" Offset="1" />
+                    <GradientStop Color="Blue" Offset="0" />
+                </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>

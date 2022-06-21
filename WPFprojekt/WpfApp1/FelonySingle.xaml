@@ -29,31 +29,22 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Margin="0, 0, 0, 10" FontSize="28" HorizontalAlignment="Center"><Run Language="pl-pl" Text="Felony" FontFamily="Cooper Black"/></TextBlock>
                 <StackPanel Grid.Row="1">
-                    <TextBlock><Run Language="pl-pl" Text="Name:"/></TextBlock>
-                    <Label x:Name="Name"></Label>
+                <TextBlock Style="{StaticResource TextBlockFelonySingle}"><Run Language="pl-pl" Text="Name:"/></TextBlock>
+                    <Label x:Name="Name" Style="{StaticResource LabelFelonySingle}"></Label>
                 </StackPanel>
                 <StackPanel Grid.Row="2">
-                    <TextBlock><Run Language="pl-pl" Text="Date:"/></TextBlock>
-                    <Label x:Name="Date"/>
+                <TextBlock Style="{StaticResource TextBlockFelonySingle}"><Run Language="pl-pl" Text="Date:"/></TextBlock>
+                <Label x:Name="Date" Style="{StaticResource LabelFelonySingle}"/>
                 </StackPanel>
                 <StackPanel Grid.Row="3">
-                    <TextBlock><Run Language="pl-pl" Text="Hour:"/></TextBlock>
-                    <Label x:Name="Hour"/>
+                <TextBlock Style="{StaticResource TextBlockFelonySingle}"><Run Language="pl-pl" Text="Hour:"/></TextBlock>
+                <Label x:Name="Hour" Style="{StaticResource LabelFelonySingle}"/>
                 </StackPanel>
             <Grid.Resources>
                 <Style TargetType="StackPanel">
                     <Setter Property="Orientation" Value="Horizontal"/>
                 </Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="FontStyle" Value="Oblique"/>
-                    <Setter Property="Margin" Value="10, 0"/>
-                    <Setter Property="FontSize" Value="25"/>
-                </Style>
-                <Style TargetType="Label">
-                    <Setter Property="FontStyle" Value="Oblique"/>
-                    <Setter Property="Margin" Value="10, 0"/>
-                    <Setter Property="FontSize" Value="28"/>
-                </Style>
+                
             </Grid.Resources>
         </Grid>
         
@@ -76,8 +67,8 @@
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <ComboBox Grid.Column="0" Name="KartotekaBox" DisplayMemberPath="RegisterId"/>
-                        <Button Grid.Column="1" Name="AddSprawca" Content="Add" Background="CadetBlue" Click="AddSprawca_Click"/>
-                        <Button Grid.Column="2" x:Name="DeleteSprawca" Content="Delete" Background="Red" Click="Delete_Sprawca_Click"/>
+                        <Button Grid.Column="1" Name="AddSprawca" Content="Add" Background="CadetBlue" Style="{DynamicResource ButtonFelonySingle}" Click="AddSprawca_Click"/>
+                        <Button Grid.Column="2" x:Name="DeleteSprawca" Content="Delete" Background="Red" Style="{DynamicResource ButtonFelonySingle}" Click="Delete_Sprawca_Click"/>
                     </Grid>
                 </StackPanel>
                 <Grid Grid.Row="1">
@@ -85,7 +76,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Causers:"/></TextBlock>
+                    <TextBlock Grid.Row="0" Style="{StaticResource TextBlock2FelonySingle}"><Run Language="pl-pl" Text="Causers:"/></TextBlock>
                     <ListView Grid.Row="1" Name="ListViewColumnsSprawcy" MaxWidth="350">
                         <ListView.View>
                             <GridView>
@@ -113,8 +104,8 @@
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <ComboBox Grid.Column="0" Name="PolicjantBox" DisplayMemberPath="PolicemanId"/>
-                        <Button Grid.Column="1" x:Name="Add_Policjant" Content="Add" Background="CadetBlue" Click="Add_Policjant_Click"/>
-                        <Button Grid.Column="2" x:Name="Delete_Policjant" Content="Delete" Background="Red" Click="Delete_Policjant_Click"/>
+                        <Button Grid.Column="1" x:Name="Add_Policjant" Content="Add" Background="CadetBlue" Style="{DynamicResource ButtonFelonySingle}" Click="Add_Policjant_Click"/>
+                        <Button Grid.Column="2" x:Name="Delete_Policjant" Content="Delete" Background="Red" Style="{DynamicResource ButtonFelonySingle}" Click="Delete_Policjant_Click"/>
                     </Grid>
                 </StackPanel>
                 <Grid Grid.Row="1">
@@ -122,7 +113,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"><Run Language="pl-pl" Text="Policemen at place:"/></TextBlock>
+                    <TextBlock Grid.Row="0" Style="{StaticResource TextBlock2FelonySingle}"><Run Language="pl-pl" Text="Policemen at place:"/></TextBlock>
                     <ListView Grid.Row="1" x:Name="ListViewColumnsPolicjanci" MaxWidth="450">
                         <ListView.View>
                             <GridView>
@@ -137,22 +128,6 @@
                 </Grid>
             </Grid>
             <Grid.Resources>
-                <Style TargetType="Button">
-                    <Style.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10" />
-                        </Style>
-                    </Style.Resources>
-                    <Setter Property="FontSize" Value="17"/>
-                    <Setter Property="MinWidth" Value="60"/>
-                    <Setter Property="Margin" Value="10, 0, 0, 0"/>
-                </Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Margin" Value="10"/>
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="FontStyle" Value="Oblique"/>
-                    <Setter Property="FontSize" Value="20"/>
-                </Style>
                 <Style TargetType="Label">
                     <Setter Property="FontSize" Value="15"/>
                 </Style>

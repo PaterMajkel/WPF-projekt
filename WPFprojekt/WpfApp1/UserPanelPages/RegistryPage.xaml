@@ -6,17 +6,11 @@
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d"
       Title="RegistryPage">
-    <Grid>
+    <Grid Style="{StaticResource GridGradient}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="Blue" Offset="0.0" />
-                <GradientStop Color="Cyan" Offset="1.0" />
-            </LinearGradientBrush>
-        </Grid.Background>
 
 
         <ListView Grid.Column="0" MouseDoubleClick="ListView_MouseDoubleClick" Margin="20" Name="ListViewColumns"
@@ -40,36 +34,16 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Name="Add" Content="Dodaj"
-                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                    RenderTransformOrigin="0.422,-1.782" MinWidth="150"
-                    FontSize="18" Click="Button_Click_Dodaj">
-            </Button>
-            <Button Grid.Row="1" Name="Edit" Content="Edytuj"
+            <Button Grid.Row="0" Name="Add" Content="Dodaj" Style="{DynamicResource ButtonRegistryPanel}"
+                    Click="Button_Click_Dodaj"/>
+            <Button Grid.Row="1" Name="Edit" Content="Edytuj" Style="{DynamicResource ButtonRegistryPanel}"
                     IsEnabled="False"
-                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                    RenderTransformOrigin="0.422,-1.782" MinWidth="150"
                     Background="Yellow"
-                    FontSize="18" Click="Button_Click_Edit">
-            </Button>
-            <Button Grid.Row="2" x:Name="Delete" Content="Usuń"
+                    Click="Button_Click_Edit"/>
+            <Button Grid.Row="2" x:Name="Delete" Content="Usuń" Style="{DynamicResource ButtonRegistryPanel}"
                     IsEnabled="False"
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                    RenderTransformOrigin="0.422,-1.782" MinWidth="150" Background="Red"
-                    FontSize="18" Click="Button_Click_Usun">
-            </Button>
+                    Background="Red"
+                    Click="Button_Click_Usun"/>
         </Grid>
-        <Grid.Resources>
-            <Style TargetType="Button">
-                <Style.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Style.Resources>
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="Background" Value="CadetBlue" />
-                <Setter Property="Height" Value="50" />
-            </Style>
-        </Grid.Resources>
     </Grid>
 </Page>
