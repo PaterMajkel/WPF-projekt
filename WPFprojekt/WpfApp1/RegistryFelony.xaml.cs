@@ -151,5 +151,29 @@ namespace PoliceApp
         {
             Remove.IsEnabled = ListViewColumns.SelectedItems.Count != 0;
         }
+        private void PrintData()
+        {
+            FlowDocument fd = new FlowDocument();
+            foreach (var item in data)
+            {
+                fd.Blocks.Add(new Paragraph(new Run(item.ToString())));
+            }
+            PrintDialog pd = new PrintDialog();
+            if (pd.ShowDialog() != true) return;
+
+            fd.PageHeight = pd.PrintableAreaHeight;
+            fd.PageWidth = pd.PrintableAreaWidth;
+
+            IDocumentPaginatorSource idocument = fd;
+
+            pd.PrintDocument(idocument.DocumentPaginator, "Printing Flow Document...");
+        }
+
+
+
+        private void PrintButton(object sender, RoutedEventArgs e)
+        {
+            PrintData();
+        }
     }
 }

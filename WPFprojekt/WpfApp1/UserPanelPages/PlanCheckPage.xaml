@@ -6,29 +6,11 @@
       xmlns:local="clr-namespace:PoliceApp"
       mc:Ignorable="d"
        Title="Plan">
-    <Grid >
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="Blue" Offset="0.0" />
-                <GradientStop Color="Cyan" Offset="1.0" />
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="100" Margin="212,220,0,0" VerticalAlignment="Top" Width="100"/>
-        
-        <Rectangle HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="Blue" Offset="0.0" />
-                    <GradientStop Color="Cyan" Offset="1.0" />
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Image Margin="91,131,493,174" Stretch="Fill" Source="/Images/Police2.jpg" />
-
+    <Grid Style="{StaticResource GridGradient}">
         <StackPanel>
             <Label Content="Plan of Duty" FontFamily="Cooper Black"
   FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <ListView Name="ListViewColumns" MinHeight="400">
+            <ListView Name="ListViewColumns" MinHeight="250">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="IdHeader" Header="Police car ID"  Width="117" DisplayMemberBinding="{Binding PoliceCarId}" />
@@ -40,7 +22,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button x:Name="Abort" Content="Zatrzymaj" Visibility="Hidden"  HorizontalAlignment="Left"  VerticalAlignment="Top" Height="31" Width="61"/>
+            <Button Grid.Row="2" Content="Print" HorizontalAlignment="Center" Background="DarkGoldenrod" Click="PrintButton" FontSize="26"  Margin="10" Style="{DynamicResource ButtonAdminPanel}"/>
         </StackPanel>
     </Grid>
 </Page>

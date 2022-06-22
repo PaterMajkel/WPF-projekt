@@ -2,7 +2,9 @@
 using EntityFramework.Services;
 using PoliceApp.Modals;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Xps;
+using System.Windows.Xps.Packaging;
 
 namespace PoliceApp
 {
@@ -47,70 +51,70 @@ namespace PoliceApp
             switch (headerName)
             {
                 case "ID":
-                {
-                    if (!IdOrder)
                     {
-                        data = data.OrderByDescending(id => id.PolicemanId).ToList();
+                        if (!IdOrder)
+                        {
+                            data = data.OrderByDescending(id => id.PolicemanId).ToList();
+                            IdOrder = !IdOrder;
+                            break;
+                        }
+
+                        data = data.OrderBy(id => id.PolicemanId).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-
-                    data = data.OrderBy(id => id.PolicemanId).ToList();
-                    IdOrder = !IdOrder;
-                    break;
-                }
                 case "FirstName":
-                {
-                    if (!IdOrder)
                     {
-                        data = data.OrderByDescending(id => id.FirstName).ToList();
+                        if (!IdOrder)
+                        {
+                            data = data.OrderByDescending(id => id.FirstName).ToList();
+                            IdOrder = !IdOrder;
+                            break;
+                        }
+
+                        data = data.OrderBy(id => id.FirstName).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-
-                    data = data.OrderBy(id => id.FirstName).ToList();
-                    IdOrder = !IdOrder;
-                    break;
-                }
                 case "Surname":
-                {
-                    if (!IdOrder)
                     {
-                        data = data.OrderByDescending(id => id.Surname).ToList();
+                        if (!IdOrder)
+                        {
+                            data = data.OrderByDescending(id => id.Surname).ToList();
+                            IdOrder = !IdOrder;
+                            break;
+                        }
+
+                        data = data.OrderBy(id => id.Surname).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-
-                    data = data.OrderBy(id => id.Surname).ToList();
-                    IdOrder = !IdOrder;
-                    break;
-                }
                 case "Age":
-                {
-                    if (!IdOrder)
                     {
-                        data = data.OrderByDescending(id => id.Rank.Name).ToList();
+                        if (!IdOrder)
+                        {
+                            data = data.OrderByDescending(id => id.Rank.Name).ToList();
+                            IdOrder = !IdOrder;
+                            break;
+                        }
+
+                        data = data.OrderBy(id => id.Rank.Name).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-
-                    data = data.OrderBy(id => id.Rank.Name).ToList();
-                    IdOrder = !IdOrder;
-                    break;
-                }
                 case "PoliceStation adres":
-                {
-                    if (!IdOrder)
                     {
-                        data = data.OrderByDescending(id => id.PoliceStation.Address).ToList();
+                        if (!IdOrder)
+                        {
+                            data = data.OrderByDescending(id => id.PoliceStation.Address).ToList();
+                            IdOrder = !IdOrder;
+                            break;
+                        }
+
+                        data = data.OrderBy(id => id.PoliceStation.Address).ToList();
                         IdOrder = !IdOrder;
                         break;
                     }
-
-                    data = data.OrderBy(id => id.PoliceStation.Address).ToList();
-                    IdOrder = !IdOrder;
-                    break;
-                }
             }
 
             ListViewColumns.ItemsSource = data;
@@ -118,7 +122,7 @@ namespace PoliceApp
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var item = ((FrameworkElement) e.OriginalSource).DataContext as Policeman;
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as Policeman;
             if (item != null)
             {
                 Window patrolsingle = new PlanOfSuborned(item);
@@ -159,6 +163,32 @@ namespace PoliceApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RefreshData();
+        }
+
+        private void PrintData()
+        {
+            
+            FlowDocument fd = new FlowDocument();
+            foreach (var item in this.data)
+            {
+                fd.Blocks.Add(new Paragraph(new Run(item.ToString())));
+            }
+            PrintDialog pd = new PrintDialog();
+            if (pd.ShowDialog() != true) return;
+
+            fd.PageHeight = pd.PrintableAreaHeight;
+            fd.PageWidth = pd.PrintableAreaWidth;
+
+            IDocumentPaginatorSource idocument = fd;
+
+            pd.PrintDocument(idocument.DocumentPaginator, "Printing Flow Document...");
+        }
+
+
+
+        private void PrintButton(object sender, RoutedEventArgs e)
+        {
+            PrintData();
         }
     }
 }

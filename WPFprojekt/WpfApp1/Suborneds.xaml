@@ -54,9 +54,11 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Content="Add" Click="Button_Click_Dodaj" Style="{DynamicResource ButtonSuborneds}" />
                 <Button Grid.Row="1" Content="Refresh" Background="DarkTurquoise" Click="Button_Click" Style="{DynamicResource ButtonSuborneds}" />
+                <Button Grid.Row="2" Content="Print" Background="DarkGoldenrod" Click="PrintButton" Style="{DynamicResource ButtonSuborneds}" />
             </Grid>
         </Grid>
         <Grid.Resources>

@@ -43,6 +43,6 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <Button Grid.Row="2" x:Name="Abort" Content="Abort" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20, 5" Visibility="Hidden"/>
+        <Button Grid.Row="2" Content="Print" HorizontalAlignment="Center" Background="DarkGoldenrod" Click="PrintButton" FontSize="26"  Margin="10" Style="{DynamicResource ButtonAdminPanel}"/>
     </Grid>
 </Window>
